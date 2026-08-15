@@ -153,98 +153,11 @@
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
-
-  /* LEARN PUNJABI — separate section, its own identity */
-  .learn-section{
-    background:var(--ink); color:#fff; border-top:none;
-    padding:90px 0 100px;
-  }
-  .learn-eyebrow{color:var(--marigold);}
-  .learn-section h2{color:#fff;}
-  .learn-section .section-head p{color:rgba(255,255,255,0.65);}
-  nav.links a.learn-nav-link{
-    color:var(--terracotta);font-weight:600;
-  }
-
-  .stage-track{display:flex;gap:6px;margin-bottom:44px;max-width:560px;}
-  .stage-dot{
-    flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,0.12);
-    position:relative;
-  }
-  .stage-dot.active{background:var(--sage);}
-  .stage-dot span{
-    position:absolute;top:14px;left:0;font-family:'Space Mono',monospace;
-    font-size:10px;color:rgba(255,255,255,0.4);white-space:nowrap;
-  }
-  .stage-dot.active span{color:var(--sage);}
-
-  .learn-panel{
-    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
-    border-radius:20px;padding:36px;
-  }
-  .learn-panel-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:6px;}
-  .learn-panel-head h3{color:#fff;font-size:18px;margin:0;}
-  .stars{
-    font-family:'Space Mono',monospace;font-size:13px;color:var(--marigold);
-    background:rgba(232,147,63,0.12);padding:6px 14px;border-radius:20px;
-  }
-  .learn-note{color:rgba(255,255,255,0.55);font-size:14px;margin-bottom:28px;}
-
-  .letter-row{display:flex;gap:14px;margin-bottom:32px;flex-wrap:wrap;}
-  .letter-tile{
-    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
-    border-radius:12px;width:76px;height:88px;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;gap:2px;cursor:pointer;transition:transform .15s;
-  }
-  .letter-tile:hover{transform:translateY(-3px);border-color:var(--marigold);}
-  .letter-tile .gur{font-family:'Fraunces',serif;font-size:30px;color:var(--marigold);}
-  .letter-tile .eng{font-family:'Space Mono',monospace;font-size:12px;color:rgba(255,255,255,0.5);}
-
-  .game-tabs{display:flex;gap:10px;margin-bottom:24px;}
-  .game-tab{
-    background:transparent;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.7);
-    padding:10px 20px;border-radius:24px;font-size:13px;font-family:'Work Sans';cursor:pointer;
-    font-weight:500;
-  }
-  .game-tab.active{background:var(--terracotta);border-color:var(--terracotta);color:#fff;}
-
-  .game-instructions{color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:20px;}
-  .snap-pile{margin-bottom:20px;}
-  .flip-btn{
-    background:var(--sage);color:#fff;border:none;padding:12px 24px;border-radius:24px;
-    font-size:14px;font-weight:600;cursor:pointer;font-family:'Work Sans';
-  }
-  .snap-cards{display:flex;gap:14px;margin-bottom:20px;min-height:100px;flex-wrap:wrap;}
-  .snap-card{
-    width:80px;height:96px;background:#fff;border-radius:10px;
-    display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;
-    font-size:36px;color:var(--ink);animation:flipin .3s ease;
-  }
-  @keyframes flipin{from{transform:rotateY(90deg);opacity:0;}to{transform:rotateY(0);opacity:1;}}
-  .snap-btn{background:var(--terracotta);border:none;}
-  .snap-btn:disabled{opacity:0.35;cursor:not-allowed;}
-  .game-feedback{margin-top:14px;font-size:14px;color:var(--marigold);min-height:20px;}
-
-  .memory-grid{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:12px;max-width:520px;margin-bottom:16px;
-  }
-  .memory-card{
-    aspect-ratio:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
-    border-radius:10px;display:flex;align-items:center;justify-content:center;
-    font-family:'Fraunces',serif;font-size:28px;color:transparent;cursor:pointer;
-    transition:background .2s;user-select:none;
-  }
-  .memory-card.flipped{background:#fff;color:var(--ink);}
-  .memory-card.matched{background:rgba(110,139,93,0.35);color:var(--sage);cursor:default;}
+  nav.links a.learn-nav-link{color:var(--terracotta);font-weight:600;}
 
   @media (max-width:820px){
-    .memory-grid{grid-template-columns:repeat(4,1fr);}
-  }
-
-  @media (max-width:820px){
-    .about-grid, .phase-grid, .lesson-grid, .involve-grid{grid-template-columns:1fr;}
+    .about-grid, .phase-grid, .involve-grid{grid-template-columns:1fr;}
     nav.links{display:none;}
-    .scheme-wrap{padding:32px 22px;}
   }
 </style>
 </head>
@@ -258,7 +171,7 @@
       <a href="#children">Who we support</a>
       <a href="#centre">Rainbow Centre Punjab</a>
       <a href="#involved">Get involved</a>
-      <a href="#learn" class="learn-nav-link">Learn Punjabi</a>
+      <a href="learn-punjabi.html" class="learn-nav-link">Learn Punjabi</a>
     </nav>
     <a class="btn" href="#involved">Donate</a>
   </div>
@@ -271,7 +184,7 @@
     <p class="hero-sub">We're building Rainbow Centre Punjab — a holistic, inclusive learning and vocational centre for disabled and orphaned children — and developing new resources like the Punjabi Reading Scheme to teach and celebrate Punjabi language and culture.</p>
     <div class="hero-cta">
       <a class="btn" href="#involved">Support the centre</a>
-      <a class="btn ghost" href="#learn">Try the reading scheme</a>
+      <a class="btn ghost" href="learn-punjabi.html">Try the reading scheme</a>
     </div>
   </div>
   <div class="arc-wrap">
@@ -371,49 +284,6 @@
   </div>
 </section>
 
-<section id="learn" class="learn-section">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow learn-eyebrow">A separate part of this site · Rainbow Punjabi Accelerated Reading Scheme</span>
-      <h2>Learn to read Punjabi, five letters at a time.</h2>
-      <p>This is the digital home of Arvinder Singh Paul's Stage 1–7 reading scheme — no physical kit needed. Everything below is Stage 1, Book 1: real letters, real games, played straight in your browser.</p>
-    </div>
-
-    <div class="stage-track reveal" id="stageTrack"></div>
-
-    <div class="learn-panel reveal">
-      <div class="learn-panel-head">
-        <h3>Stage 1 · Book 1 — the letters h, r, g, m, s</h3>
-        <div class="stars" id="starDisplay">★ <span id="starCount">0</span> gold stars</div>
-      </div>
-      <p class="learn-note">Say the <em>sound</em>, not the letter name — "h", not "hahha".</p>
-
-      <div class="letter-row" id="letterRow"></div>
-
-      <div class="game-tabs">
-        <button class="game-tab active" data-game="snap">Play Snap</button>
-        <button class="game-tab" data-game="memory">Play Memory</button>
-      </div>
-
-      <div id="snapGame" class="game-area">
-        <p class="game-instructions">Flip a card and say its sound out loud. If it matches the last card, hit Snap!</p>
-        <div class="snap-pile" id="snapPile">
-          <button class="flip-btn" id="flipBtn">Flip next card</button>
-        </div>
-        <div class="snap-cards" id="snapCards"></div>
-        <button class="btn snap-btn" id="snapCallBtn" disabled>SNAP!</button>
-        <p class="game-feedback" id="snapFeedback"></p>
-      </div>
-
-      <div id="memoryGame" class="game-area" style="display:none;">
-        <p class="game-instructions">Find the matching pairs. Say the sound each time you flip a card.</p>
-        <div class="memory-grid" id="memoryGrid"></div>
-        <p class="game-feedback" id="memoryFeedback"></p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap footer-grid">
     <div class="logo"><span class="dot"></span>Rainbow Schools</div>
@@ -427,141 +297,6 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   }, {threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
-
-  /* ---- LEARN PUNJABI ---- */
-  const LETTERS = [
-    {gur:'ਹ', eng:'h'}, {gur:'ਰ', eng:'r'}, {gur:'ਗ', eng:'g'},
-    {gur:'ਮ', eng:'m'}, {gur:'ਸ', eng:'s'}
-  ];
-  const STAGES = ['Stage 1','Stage 2','Stage 3','Stage 4','Stage 5','Stage 6','Stage 7'];
-  let stars = 0;
-
-  function updateStars(n){
-    stars += n;
-    document.getElementById('starCount').textContent = stars;
-  }
-
-  // stage track
-  const track = document.getElementById('stageTrack');
-  STAGES.forEach((s,i)=>{
-    const d = document.createElement('div');
-    d.className = 'stage-dot' + (i===0 ? ' active' : '');
-    d.innerHTML = '<span>' + s + '</span>';
-    track.appendChild(d);
-  });
-
-  // letter tiles
-  const letterRow = document.getElementById('letterRow');
-  LETTERS.forEach(l=>{
-    const t = document.createElement('div');
-    t.className = 'letter-tile';
-    t.innerHTML = '<div class="gur">'+l.gur+'</div><div class="eng">'+l.eng+'</div>';
-    t.onclick = ()=>{ t.style.borderColor = 'var(--sage)'; updateStars(1); };
-    letterRow.appendChild(t);
-  });
-
-  // game tab switching
-  document.querySelectorAll('.game-tab').forEach(btn=>{
-    btn.onclick = ()=>{
-      document.querySelectorAll('.game-tab').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const game = btn.dataset.game;
-      document.getElementById('snapGame').style.display = game==='snap' ? 'block' : 'none';
-      document.getElementById('memoryGame').style.display = game==='memory' ? 'block' : 'none';
-    };
-  });
-
-  /* SNAP */
-  let snapDeck = [], lastCard = null, snapHistory = [];
-  function buildSnapDeck(){
-    let deck = [];
-    LETTERS.forEach(l=>{ deck.push(l); deck.push(l); });
-    for(let i=deck.length-1;i>0;i--){
-      const j = Math.floor(Math.random()*(i+1));
-      [deck[i],deck[j]] = [deck[j],deck[i]];
-    }
-    return deck;
-  }
-  function resetSnap(){
-    snapDeck = buildSnapDeck();
-    snapHistory = [];
-    lastCard = null;
-    document.getElementById('snapCards').innerHTML = '';
-    document.getElementById('snapCallBtn').disabled = true;
-    document.getElementById('snapFeedback').textContent = '';
-  }
-  document.getElementById('flipBtn').onclick = ()=>{
-    if(snapDeck.length===0){ document.getElementById('snapFeedback').textContent = 'Deck finished — reshuffling!'; resetSnap(); return; }
-    const card = snapDeck.pop();
-    snapHistory.push(card);
-    const el = document.createElement('div');
-    el.className = 'snap-card';
-    el.textContent = card.gur;
-    document.getElementById('snapCards').appendChild(el);
-    document.getElementById('snapFeedback').textContent = 'Say it: "' + card.eng + '"';
-    const isMatch = lastCard && lastCard.eng === card.eng;
-    document.getElementById('snapCallBtn').disabled = !isMatch;
-    lastCard = card;
-  };
-  document.getElementById('snapCallBtn').onclick = ()=>{
-    document.getElementById('snapFeedback').textContent = 'SNAP! Well done — gold star earned.';
-    updateStars(1);
-    document.getElementById('snapCallBtn').disabled = true;
-  };
-  resetSnap();
-
-  /* MEMORY */
-  function buildMemoryDeck(){
-    let deck = [];
-    LETTERS.forEach((l,i)=>{ deck.push({...l,id:i+'a'}); deck.push({...l,id:i+'b'}); });
-    for(let i=deck.length-1;i>0;i--){
-      const j = Math.floor(Math.random()*(i+1));
-      [deck[i],deck[j]] = [deck[j],deck[i]];
-    }
-    return deck;
-  }
-  let memDeck, flipped = [], matchedCount = 0, lock = false;
-  function resetMemory(){
-    memDeck = buildMemoryDeck();
-    flipped = []; matchedCount = 0; lock = false;
-    const grid = document.getElementById('memoryGrid');
-    grid.innerHTML = '';
-    document.getElementById('memoryFeedback').textContent = '';
-    memDeck.forEach((card,idx)=>{
-      const el = document.createElement('div');
-      el.className = 'memory-card';
-      el.dataset.idx = idx;
-      el.onclick = ()=>flipMemoryCard(idx, el);
-      grid.appendChild(el);
-    });
-  }
-  function flipMemoryCard(idx, el){
-    if(lock || el.classList.contains('flipped') || el.classList.contains('matched')) return;
-    el.textContent = memDeck[idx].gur;
-    el.classList.add('flipped');
-    flipped.push({idx, el});
-    if(flipped.length === 2){
-      lock = true;
-      const [a,b] = flipped;
-      if(memDeck[a.idx].eng === memDeck[b.idx].eng){
-        a.el.classList.add('matched'); b.el.classList.add('matched');
-        document.getElementById('memoryFeedback').textContent = 'Matched "' + memDeck[a.idx].eng + '" — gold star!';
-        updateStars(1);
-        matchedCount++;
-        flipped = []; lock = false;
-        if(matchedCount === LETTERS.length){
-          document.getElementById('memoryFeedback').textContent = 'All pairs found! Well done.';
-        }
-      } else {
-        setTimeout(()=>{
-          a.el.classList.remove('flipped'); a.el.textContent='';
-          b.el.classList.remove('flipped'); b.el.textContent='';
-          flipped = []; lock = false;
-        }, 700);
-      }
-    }
-  }
-  resetMemory();
 </script>
 
 </body>
