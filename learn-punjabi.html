@@ -3,407 +3,793 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rainbow Punjabi Accelerated Reading — Learn Punjabi Online</title>
+<title>Rainbow Punjabi Accelerated Reading — Stage 1 Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1B2430; --ink-2:#232F3E;
-    --paper:#FBF3E7;
+    --ink:#1B2430;
+    --paper:#FBF3E7; --paper-2:#F3E7D6;
+    --green:#3E7D44; --green-l:#EAF3E7;
     --marigold:#E8933F; --terracotta:#C1502E; --sage:#6E8B5D;
-    --line: rgba(255,255,255,0.1);
+    --line:rgba(27,36,48,0.12);
   }
   *{box-sizing:border-box;}
   body{
-    margin:0;background:var(--ink);color:#fff;
-    font-family:'Work Sans', sans-serif; line-height:1.6;
+    margin:0;background:var(--ink);color:var(--ink);
+    font-family:'Work Sans',sans-serif;line-height:1.55;
+    height:100vh;overflow:hidden;
   }
-  h1,h2,h3{font-family:'Fraunces', serif;font-weight:500;margin:0 0 .5em;}
-  p{margin:0 0 1em;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;margin:0 0 .4em;}
+  p{margin:0 0 .9em;}
   a{color:inherit;}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 28px;}
 
-  header.site{
-    border-bottom:1px solid var(--line);
-    position:sticky;top:0;background:rgba(27,36,48,0.94);backdrop-filter:blur(6px);z-index:50;
+  .topbar{
+    position:fixed;top:0;left:0;right:0;height:56px;z-index:100;
+    background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:0 20px;border-bottom:1px solid rgba(255,255,255,0.08);
   }
-  .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 28px;max-width:1000px;margin:0 auto;}
-  .logo{font-family:'Fraunces',serif;font-size:18px;font-weight:600;display:flex;align-items:center;gap:8px;}
-  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--marigold);display:inline-block;}
-  .back-link{font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;}
-  .back-link:hover{color:#fff;}
+  .topbar .logo{font-family:'Fraunces',serif;font-size:15px;display:flex;align-items:center;gap:8px;}
+  .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--marigold);}
+  .topbar a.back{font-size:12px;color:rgba(255,255,255,0.55);text-decoration:none;}
+  .topbar a.back:hover{color:#fff;}
+  .stars-badge{font-family:'Space Mono',monospace;font-size:12px;color:var(--marigold);background:rgba(232,147,63,0.15);padding:5px 12px;border-radius:14px;}
 
-  .hero{padding:64px 0 40px;}
-  .eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--marigold);display:block;margin-bottom:14px;}
-  .hero h1{font-size:clamp(30px,4.5vw,48px);max-width:700px;line-height:1.1;}
-  .hero p.lead{color:rgba(255,255,255,0.62);font-size:16px;max-width:560px;}
-
-  .stage-track{display:flex;gap:6px;margin:32px 0 8px;max-width:640px;}
-  .stage-dot{flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,0.1);position:relative;}
-  .stage-dot.active{background:var(--sage);}
-  .stage-dot.done{background:rgba(110,139,93,0.5);}
-  .stage-labels{display:flex;gap:6px;max-width:640px;margin-bottom:44px;}
-  .stage-labels span{flex:1;font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.4);text-align:left;}
-
-  section{padding:0 0 64px;}
-  .book-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
-  .book-btn{
-    background:rgba(255,255,255,0.05);border:1px solid var(--line);color:rgba(255,255,255,0.7);
-    padding:9px 18px;border-radius:20px;font-size:13px;cursor:pointer;font-family:'Work Sans';
+  .stage{
+    position:fixed;top:56px;bottom:76px;left:0;right:0;
+    display:flex;align-items:center;justify-content:center;
+    perspective:2400px;padding:20px;
   }
-  .book-btn.active{background:var(--terracotta);border-color:var(--terracotta);color:#fff;}
-
-  .panel{
-    background:rgba(255,255,255,0.035);border:1px solid var(--line);border-radius:20px;padding:32px;
+  .book{
+    position:relative;width:min(880px, 94vw);height:min(560px, 78vh);
   }
-  .panel-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:6px;}
-  .panel-head h2{font-size:20px;color:#fff;margin:0;}
-  .stars{font-family:'Space Mono',monospace;font-size:13px;color:var(--marigold);background:rgba(232,147,63,0.12);padding:6px 14px;border-radius:20px;}
-  .note{color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:24px;}
-
-  .letter-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap;}
-  .letter-tile{
-    background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:12px;
-    width:72px;height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
-    cursor:pointer;transition:transform .15s;
+  .page{
+    position:absolute;inset:0;
+    background:var(--paper);border-radius:14px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.45);
+    overflow:hidden;
+    transform-origin:left center;
+    transition:transform .55s cubic-bezier(.4,.1,.2,1);
+    backface-visibility:hidden;
   }
-  .letter-tile:hover{transform:translateY(-3px);border-color:var(--marigold);}
-  .letter-tile .gur{font-family:'Fraunces',serif;font-size:28px;color:var(--marigold);}
-  .letter-tile .eng{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.5);}
+  .page-inner{ height:100%; width:100%; overflow-y:auto; padding:44px 52px 40px; }
+  .page-inner::-webkit-scrollbar{width:6px;}
+  .page-inner::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.15);border-radius:3px;}
 
-  .game-tabs{display:flex;gap:10px;margin-bottom:22px;}
-  .game-tab{
-    background:transparent;border:1px solid var(--line);color:rgba(255,255,255,0.65);
-    padding:9px 18px;border-radius:22px;font-size:13px;cursor:pointer;font-family:'Work Sans';font-weight:500;
+  .page-band{
+    background:var(--green);color:#fff;padding:14px 52px;
+    font-family:'Fraunces',serif;font-weight:600;font-size:15px;
+    display:flex;justify-content:space-between;align-items:center;
   }
-  .game-tab.active{background:var(--terracotta);border-color:var(--terracotta);color:#fff;}
+  .page-band .sub{font-family:'Work Sans';font-weight:500;font-size:12px;opacity:0.85;}
+  .page-num{position:absolute;bottom:14px;right:20px;font-family:'Space Mono',monospace;font-size:11px;color:rgba(27,36,48,0.35);}
 
-  .game-instructions{color:rgba(255,255,255,0.55);font-size:13px;margin-bottom:18px;}
-  .flip-btn{background:var(--sage);color:#fff;border:none;padding:11px 22px;border-radius:22px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Work Sans';}
-  .snap-cards{display:flex;gap:12px;margin:18px 0;min-height:90px;flex-wrap:wrap;}
-  .snap-card{
-    width:74px;height:88px;background:#fff;border-radius:10px;color:var(--ink);
-    display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:32px;
-    animation:flipin .3s ease;
+  .controls{
+    position:fixed;bottom:0;left:0;right:0;height:76px;background:var(--ink);
+    display:flex;align-items:center;justify-content:center;gap:18px;
+    border-top:1px solid rgba(255,255,255,0.08);
   }
+  .nav-btn{
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#fff;
+    width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:16px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .nav-btn:hover{background:rgba(255,255,255,0.14);}
+  .nav-btn:disabled{opacity:0.25;cursor:not-allowed;}
+  .page-indicator{color:rgba(255,255,255,0.6);font-family:'Space Mono',monospace;font-size:12px;min-width:70px;text-align:center;}
+  .jump-select{
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#fff;
+    border-radius:20px;padding:8px 14px;font-size:12px;font-family:'Work Sans';max-width:220px;
+  }
+
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--terracotta);display:block;margin-bottom:10px;}
+  .cover-page{background:linear-gradient(180deg,var(--green) 0%, var(--green) 32%, var(--paper) 32%);display:flex;flex-direction:column;height:100%;}
+  .cover-top{padding:28px 40px;color:#fff;}
+  .cover-top .tag{font-family:'Space Mono',monospace;font-size:11px;background:rgba(255,255,255,0.15);display:inline-block;padding:4px 10px;border-radius:10px;margin-bottom:10px;}
+  .cover-top h1{font-size:26px;color:#fff;margin:0;}
+  .cover-mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 40px;text-align:center;}
+  .cover-mid .letters{font-family:'Fraunces',serif;font-size:52px;color:var(--terracotta);letter-spacing:4px;}
+  .cover-mid .letters-en{font-family:'Space Mono',monospace;font-size:13px;color:var(--ink);margin-top:4px;}
+  .cover-mid h2{font-size:22px;margin-top:20px;}
+  .cover-mid .author{font-family:'Work Sans';font-size:13px;color:rgba(27,36,48,0.6);margin-top:16px;}
+
+  .kit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px;}
+  .kit-item{background:var(--paper-2);border-radius:12px;padding:16px;text-align:center;font-size:12px;color:var(--ink);}
+  .kit-item .emoji{font-size:26px;display:block;margin-bottom:8px;}
+
+  .stage-chip-row{display:flex;gap:6px;margin-top:24px;}
+  .stage-chip{flex:1;text-align:center;padding:8px 4px;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;color:#fff;}
+
+  .rule-item{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start;}
+  .rule-item .ic{font-size:18px;}
+  .rule-item b{display:block;margin-bottom:2px;}
+
+  .howto-steps{counter-reset:step;padding-left:0;list-style:none;}
+  .howto-steps li{counter-increment:step;margin-bottom:10px;padding-left:30px;position:relative;}
+  .howto-steps li::before{content:counter(step);position:absolute;left:0;top:0;width:20px;height:20px;background:var(--sage);color:#fff;border-radius:50%;font-size:11px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;}
+
+  .book-overview-card{background:var(--paper-2);border-radius:12px;padding:18px;margin-bottom:12px;}
+  .book-overview-card h3{font-size:15px;margin-bottom:4px;}
+  .book-overview-card p{font-size:13px;color:rgba(27,36,48,0.65);margin:0;}
+
+  .session-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+  .session-header h2{font-size:17px;margin:0;}
+  .session-time{font-family:'Space Mono',monospace;font-size:11px;color:var(--terracotta);background:rgba(193,80,46,0.1);padding:4px 10px;border-radius:10px;}
+  .session-need{font-size:12px;color:rgba(27,36,48,0.6);margin-bottom:16px;}
+
+  .letter-row{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
+  .letter-tile{background:#fff;border:1px solid var(--line);border-radius:12px;width:64px;height:76px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;transition:transform .15s;}
+  .letter-tile:hover{transform:translateY(-3px);border-color:var(--sage);}
+  .letter-tile.done{background:var(--green-l);border-color:var(--sage);}
+  .letter-tile .gur{font-family:'Fraunces',serif;font-size:26px;color:var(--terracotta);}
+  .letter-tile .eng{font-family:'Space Mono',monospace;font-size:10px;color:rgba(27,36,48,0.55);}
+
+  .flip-btn{background:var(--sage);color:#fff;border:none;padding:9px 18px;border-radius:18px;font-size:12px;font-weight:600;cursor:pointer;}
+  .snap-cards{display:flex;gap:10px;margin:14px 0;min-height:74px;flex-wrap:wrap;}
+  .snap-card{width:62px;height:74px;background:#fff;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:26px;color:var(--terracotta);animation:flipin .3s ease;}
   @keyframes flipin{from{transform:rotateY(90deg);opacity:0;}to{transform:rotateY(0);opacity:1;}}
-  .snap-btn{background:var(--terracotta);border:none;color:#fff;padding:11px 22px;border-radius:22px;font-weight:600;font-size:13px;cursor:pointer;font-family:'Work Sans';}
+  .snap-btn{background:var(--terracotta);color:#fff;border:none;padding:9px 18px;border-radius:18px;font-size:12px;font-weight:600;cursor:pointer;}
   .snap-btn:disabled{opacity:0.3;cursor:not-allowed;}
-  .feedback{margin-top:12px;font-size:13px;color:var(--marigold);min-height:18px;}
+  .feedback{margin-top:10px;font-size:12px;color:var(--terracotta);min-height:16px;}
 
-  .memory-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;max-width:480px;margin-bottom:14px;}
-  .memory-card{
-    aspect-ratio:1;background:rgba(255,255,255,0.06);border:1px solid var(--line);border-radius:10px;
-    display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:26px;
-    color:transparent;cursor:pointer;transition:background .2s;user-select:none;
-  }
-  .memory-card.flipped{background:#fff;color:var(--ink);}
-  .memory-card.matched{background:rgba(110,139,93,0.35);color:var(--sage);cursor:default;}
+  .memory-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:400px;margin-bottom:10px;}
+  .memory-card{aspect-ratio:1;background:#fff;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:22px;color:transparent;cursor:pointer;user-select:none;}
+  .memory-card.flipped{color:var(--terracotta);background:var(--green-l);}
+  .memory-card.matched{background:var(--sage);color:#fff;cursor:default;}
 
-  .word-builder{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
-  .word-chip{
-    background:rgba(255,255,255,0.05);border:1px solid var(--line);padding:10px 16px;border-radius:10px;
-    font-family:'Fraunces',serif;font-size:20px;color:var(--marigold);display:flex;flex-direction:column;align-items:center;gap:2px;
-  }
-  .word-chip .romani{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.45);}
-  .word-chip.real{border-color:var(--sage);}
-  .word-chip.silly{opacity:0.55;}
+  .word-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px;}
+  .word-table th,.word-table td{border:1px solid var(--line);padding:8px;text-align:center;}
+  .word-table th{background:var(--paper-2);font-family:'Space Mono',monospace;font-size:12px;}
+  .word-table td.real{color:var(--sage);font-family:'Fraunces',serif;font-weight:600;cursor:pointer;}
+  .word-table td.silly{color:rgba(27,36,48,0.35);font-family:'Fraunces',serif;}
+  .word-table td:hover{background:var(--paper-2);}
 
-  .matra-box{
-    display:flex;gap:24px;align-items:center;background:rgba(255,255,255,0.04);
-    border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:24px;flex-wrap:wrap;
-  }
-  .matra-box .m{font-family:'Fraunces',serif;font-size:34px;color:var(--marigold);}
-  .matra-box .desc{font-size:13px;color:rgba(255,255,255,0.6);max-width:340px;}
+  .matra-box{display:flex;gap:20px;align-items:center;background:var(--paper-2);border-radius:12px;padding:16px;margin-bottom:16px;flex-wrap:wrap;}
+  .matra-box .m{font-family:'Fraunces',serif;font-size:30px;color:var(--terracotta);}
+  .matra-box .desc{font-size:12px;color:rgba(27,36,48,0.65);max-width:280px;}
 
-  .stage2-teaser{
-    background:rgba(232,147,63,0.06);border:1px dashed rgba(232,147,63,0.4);
-    border-radius:16px;padding:28px;margin-top:20px;
-  }
-  .stage2-teaser h3{color:var(--marigold);font-size:16px;}
-  .char-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;}
-  .char-chip{font-family:'Space Mono',monospace;font-size:12px;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.05);padding:6px 14px;border-radius:16px;}
+  .word-cards{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+  .wc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-family:'Fraunces',serif;font-size:18px;color:var(--terracotta);cursor:pointer;text-align:center;position:relative;}
+  .wc .rom{display:block;font-family:'Space Mono',monospace;font-size:9px;color:rgba(27,36,48,0.4);margin-top:2px;}
+  .wc.revealed{background:var(--green-l);border-color:var(--sage);}
 
-  footer.f{padding:40px 0;border-top:1px solid var(--line);text-align:center;font-size:12px;color:rgba(255,255,255,0.4);}
+  .glossary-search{width:100%;padding:10px 14px;border-radius:20px;border:1px solid var(--line);font-size:13px;margin-bottom:16px;font-family:'Work Sans';}
+  .gloss-row{display:flex;gap:14px;border-bottom:1px solid var(--line);padding:8px 0;font-size:13px;}
+  .gloss-row .g{font-family:'Fraunces',serif;color:var(--terracotta);min-width:56px;}
+  .gloss-row .r{font-family:'Space Mono',monospace;font-size:11px;color:rgba(27,36,48,0.5);min-width:80px;}
 
-  @media (max-width:700px){
+  .author-card{display:flex;gap:20px;align-items:flex-start;margin-top:10px;}
+  .author-photo{width:80px;height:80px;border-radius:50%;background:var(--paper-2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;}
+
+  .teaser-box{background:rgba(232,147,63,0.08);border:1px dashed rgba(232,147,63,0.5);border-radius:12px;padding:18px;margin-top:14px;}
+  .char-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+  .char-chip{font-family:'Space Mono',monospace;font-size:11px;background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:14px;}
+
+  @media (max-width:640px){
+    .page-inner{padding:30px 22px 30px;}
+    .cover-mid .letters{font-size:36px;}
     .memory-grid{grid-template-columns:repeat(4,1fr);}
-    .stage-labels span{display:none;}
   }
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="nav">
-    <div class="logo"><span class="dot"></span>Rainbow Punjabi Accelerated Reading</div>
-    <a class="back-link" href="index.html">← Rainbow Schools site</a>
-  </div>
-</header>
-
-<div class="hero">
-  <div class="wrap">
-    <span class="eyebrow">A separate part of the Rainbow Schools website</span>
-    <h1>Learn to read Punjabi, five letters at a time.</h1>
-    <p class="lead">The full Rainbow Punjabi Accelerated Reading Scheme by Arvinder Singh Paul — now digital. No wallet, no laminated cards, no markers. Just open your browser and play.</p>
-
-    <div class="stage-track" id="stageTrack"></div>
-    <div class="stage-labels" id="stageLabels"></div>
+<div class="topbar">
+  <div class="logo"><span class="dot"></span>Rainbow Punjabi Accelerated Reading</div>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div class="stars-badge">★ <span id="starTotal">0</span> gold stars</div>
+    <a class="back" href="index.html">← Rainbow Schools site</a>
   </div>
 </div>
 
-<section>
-  <div class="wrap">
-    <div class="book-nav" id="bookNav"></div>
+<div class="stage">
+  <div class="book" id="book"></div>
+</div>
 
-    <div class="panel" id="bookPanel">
-      <!-- filled by JS -->
-    </div>
-
-    <div class="stage2-teaser">
-      <h3>Coming next — Stage 2 (orange)</h3>
-      <p style="color:rgba(255,255,255,0.55);font-size:13px;margin-bottom:0;">5 new letters (ਕ, ਤ, ਨ, ਪ, ਲ), 2 new matras, and six illustrated storybooks starring Saran, Mehar, Kaaka and Papa. Content going live once the full Stage 2 material is confirmed.</p>
-      <div class="char-row">
-        <span class="char-chip">Saran</span>
-        <span class="char-chip">Mehar</span>
-        <span class="char-chip">Kaaka</span>
-        <span class="char-chip">Papa</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer class="f">Rainbow Punjabi Accelerated Reading Scheme · by Arvinder Singh Paul · All proceeds support Rainbow Schools</footer>
+<div class="controls">
+  <button class="nav-btn" id="prevBtn">‹</button>
+  <div class="page-indicator" id="pageIndicator">Page 1 / 1</div>
+  <button class="nav-btn" id="nextBtn">›</button>
+  <select class="jump-select" id="jumpSelect"></select>
+</div>
 
 <script>
-  const STAGES = [
-    {name:'Stage 1', colour:'#3E7D44', active:true},
-    {name:'Stage 2', colour:'#E07B2E'},
-    {name:'Stage 3', colour:'#C1502E'},
-    {name:'Stage 4', colour:'#3E6E9E'},
-    {name:'Stage 5', colour:'#D9B23E'},
-    {name:'Stage 6', colour:'#EDEDED'},
-    {name:'Stage 7', colour:'#1A1A1A'}
-  ];
-  const track = document.getElementById('stageTrack');
-  const labels = document.getElementById('stageLabels');
-  STAGES.forEach((s,i)=>{
-    const d = document.createElement('div');
-    d.className = 'stage-dot' + (i===0?' active':'');
-    track.appendChild(d);
-    const l = document.createElement('span');
-    l.textContent = s.name;
-    labels.appendChild(l);
-  });
+const B1 = [{gur:'ਹ',eng:'h'},{gur:'ਰ',eng:'r'},{gur:'ਗ',eng:'g'},{gur:'ਮ',eng:'m'},{gur:'ਸ',eng:'s'}];
+const B1_3 = B1.slice(0,3);
 
-  // Stage 1 letters, cumulative by book
-  const BOOK_LETTERS = {
-    1: [{gur:'ਹ',eng:'h'},{gur:'ਰ',eng:'r'},{gur:'ਗ',eng:'g'},{gur:'ਮ',eng:'m'},{gur:'ਸ',eng:'s'}],
-    2: [{gur:'ਹ',eng:'h'},{gur:'ਰ',eng:'r'},{gur:'ਗ',eng:'g'},{gur:'ਮ',eng:'m'},{gur:'ਸ',eng:'s'}],
-    3: [{gur:'ਹ',eng:'h'},{gur:'ਰ',eng:'r'},{gur:'ਗ',eng:'g'},{gur:'ਮ',eng:'m'},{gur:'ਸ',eng:'s'}]
-  };
-  const BOOK_TITLES = {
-    1: '5 letters and "mukta" words (no accents)',
-    2: 'Introducing the matras: kanna (aa) and kanna bindi (aan)',
-    3: 'Making more words — 2 and 3 letter combinations'
-  };
-  const WORDS = {
-    2: [
-      {gur:'ਹਾਰ',rom:'haar',real:true},{gur:'ਹਾਸਾ',rom:'haasaa',real:true},
-      {gur:'ਗਾਰ',rom:'gaar',real:true},{gur:'ਗਾਰਾ',rom:'gaaraa',real:true},
-      {gur:'ਮਾਂ',rom:'maan',real:true},{gur:'ਮਾਂਗ',rom:'maang',real:true},
-      {gur:'ਰਾਸ',rom:'raas',real:true},{gur:'ਰਾਗ',rom:'raag',real:true}
-    ],
-    3: [
-      {gur:'ਸਾਗ',rom:'saag',real:true},{gur:'ਸਹਾਰਾ',rom:'shaaraa',real:true},
-      {gur:'ਹਰਾ',rom:'hraa',real:true},{gur:'ਮਾਰਗ',rom:'maarg',real:true},
-      {gur:'ਸਾਰਾ',rom:'saaraa',real:true},{gur:'ਗਾਗਰ',rom:'gaagr',real:true}
+let stars = 0;
+function addStars(n){ stars += n; document.getElementById('starTotal').textContent = stars; }
+
+const PAGES = [
+  { key:'cover', title:'Cover' },
+  { key:'kit', title:'What\'s in the pack' },
+  { key:'series', title:'Series title' },
+  { key:'tagline', title:'5 letters at a time' },
+  { key:'stage1intro', title:'Stage 1 — Green' },
+  { key:'letter', title:'Why choose this scheme', heading:'Why choose the \u2018Rainbow Punjabi Accelerated Reading Scheme\u2019?',
+    body:[
+      'Dear Parent, Teacher, Self Learner,',
+      'Punjabi is a beautifully phonetic language — once you learn the 35 letters of the paintee (the Punjabi alphabet) and the 12 accent marks (matras), reading becomes simply a case of sounding out what you see.',
+      'But here\u2019s the biggest issue: traditionally, learners are expected to memorise all 35 letters before they can even begin reading. Many children lose motivation and interest along the way — it becomes a chore rather than a joy.',
+      'That\u2019s what inspired this Rainbow Accelerated Reading Scheme: a carefully thought through, structured, play-based system that breaks learning into 7 simple Stages, starting with just five letters at a time.'
     ]
-  };
+  },
+  { key:'letter', title:'Before you begin', heading:'Do STRICTLY follow the guide, in order',
+    body:[
+      'Whether you\u2019re an adult learner, a teacher, or a parent helping your child, follow the graded sessions in the correct order — whilst having fun learning to read Punjabi.',
+      'Just 10–15 minutes of focussed play daily is all you need. Watch your sight-word list grow as you start recognising words instantly.',
+      'Start writing with the practice sheets and dry-wipe markers included — perfect for practice without pressure.',
+      'Most of all, have fun! Speak Punjabi as often as you can — the more you do, the faster reading will follow.'
+    ]
+  },
+  { key:'rules', title:'A few simple rules' },
+  { key:'howto', title:'How to play SNAP', game:'snap-howto' },
+  { key:'howto', title:'How to play MEMORY', game:'memory-howto' },
+  { key:'overview', title:'Guidance & detailed sessions' },
+  { key:'prep', title:'Get ready for Book 1' },
+  { key:'session', title:'Book 1 · Session 1', book:1, n:1, heading:'Letter Introduction through Movement', time:'10\u201315 min',
+    need:'Large cards with the letters h, r, g — cut out and stuck around the room.',
+    letters:B1_3, activity:'intro' },
+  { key:'session', title:'Book 1 · Session 2', book:1, n:2, heading:'Sound Matching & Memory', time:'10\u201315 min',
+    need:'Two copies of each letter card (h, r, g).', letters:B1_3, activity:'memory' },
+  { key:'session', title:'Book 1 · Session 3', book:1, n:3, heading:'Snap Game for Reinforcement', time:'10\u201315 min',
+    need:'Large A5 cards + 4 small cards of each letter (h, r, g).', letters:B1_3, activity:'snap' },
+  { key:'session', title:'Book 1 · Session 4', book:1, n:4, heading:'Add New Letters: \u2018m\u2019 and \u2018s\u2019', time:'10\u201315 min',
+    need:'Large A5 cards with h, r, g, m, s.', letters:B1, activity:'snap' },
+  { key:'session', title:'Book 1 · Session 5', book:1, n:5, heading:'Word Building Fun', time:'10\u201315 min',
+    need:'4 small cards of h, r, g, m, s.', letters:B1, activity:'wordbuild' },
+  { key:'session', title:'Book 1 · Session 6', book:1, n:6, heading:'Reading Words with SNAP', time:'10\u201315 min',
+    need:'Two copies of each Book 1 mukta word card.', letters:B1, activity:'snap-words' },
+  { key:'session', title:'Book 1 · Session 7', book:1, n:7, heading:'Copy the Words!', time:'10\u201315 min',
+    need:'Book 1 mukta word cards, with and without pictures.', letters:B1, activity:'wordbuild' },
+  { key:'session', title:'Book 1 · Session 8', book:1, n:8, heading:'Reading and Writing!', time:'10\u201315 min',
+    need:'Book 1 mukta word cards.', letters:B1, activity:'snap-words', badge:'WELL DONE! Ready for Book 2?' },
+  { key:'book2title', title:'Book 2 — Introducing the matras' },
+  { key:'letter', title:'What are matras?', heading:'Matras are the accent marks that add a vowel to the letter sound',
+    body:[
+      'From Book 1, you\u2019re now familiar with the 5 letter sounds of h, r, g, m and s, and able to recognise them instantly. You\u2019ve begun joining letters to make simple \u201cmukta\u201d words — meaning with no matras.',
+      'The matras are accent marks that give vowel sounds to the letter they\u2019re applied to — sometimes called \u201clagaan matra\u201d. There are 12 matras in total.',
+      'In Book 2 we introduce two of them: KANNA and KANNA BINDI.'
+    ]
+  },
+  { key:'letter', title:'Preparing for Book 2', heading:'Once you have prepared the cards for Book 2, you are ready!',
+    body:[
+      'Cut out the Green cards from the A4 sleeve marked Book 2. Put the small letters with the kanna and kanna bindi cards in small pouches.',
+      'In the table of possible words included, the GREEN words are REAL words with meaning — use the glossary to find out what they mean.',
+      'In Book 3, we begin using picture cues in simple short stories to help with reading and understanding. Each stage builds carefully on the last.'
+    ]
+  },
+  { key:'matras', title:'The matras: kanna & kanna bindi' },
+  { key:'session', title:'Book 2 · Session 1', book:2, n:1, heading:'Introduce the \u201caa\u201d matra (kanna)', time:'10\u201315 min',
+    need:'\u201caa\u201d (kanna) cards + Book 1 letter cards.', letters:B1, activity:'matra-intro', matra:{sym:'\u093E',sound:'aa'} },
+  { key:'session', title:'Book 2 · Session 2', book:2, n:2, heading:'Words with letters and the kanna', time:'10\u201315 min',
+    need:'All 2 copies of each letter card with kanna.', activity:'wordtable', table:'session2' },
+  { key:'session', title:'Book 2 · Session 3', book:2, n:3, heading:'Words with letters and the kanna (second position)', time:'10\u201315 min',
+    need:'All 2 copies of each letter card + kanna cards.', activity:'wordtable', table:'session3' },
+  { key:'session', title:'Book 2 · Session 4', book:2, n:4, heading:'Using all letters WITH \u201caa\u201d matra', time:'10\u201315 min',
+    need:'All 2 copies of each letter card with \u201caa\u201d matra.', activity:'wordgrid' },
+  { key:'session', title:'Book 2 · Session 5', book:2, n:5, heading:'Kanna Bindi words!', time:'10\u201315 min',
+    need:'All 2 copies of each letter card with kanna bindi.', activity:'wordtable', table:'session5' },
+  { key:'session', title:'Book 2 · Session 6', book:2, n:6, heading:'2/3 letter words and both matras!', time:'10\u201315 min',
+    need:'All letter cards + both matra cards.', activity:'wordgrid2' },
+  { key:'book3title', title:'Book 3 — Making More Words' },
+  { key:'letter', title:'Welcome to Book 3', heading:'Welcome to Book 3 — where reading really comes to life!',
+    body:[
+      'Cut out the word cards in the A4 sleeve labelled Book 3. Now you\u2019ll start reading real words, playing Snap and Memory, and using fun illustrations to help connect meaning with sound.',
+      'Your word cards come in matching pairs — one pair includes English alliterations in small print to guide you, the second is alliteration-free for growing confidence.',
+      'For deeper learning, the Punjabi-English dictionary published by Punjabi University (Patiala) is an excellent long-term resource.',
+      'Get ready — Stage 2 brings a whole new set of fun, graded, illustrated books to take your Punjabi reading to the next level!'
+    ]
+  },
+  { key:'session', title:'Book 3 · Session 1', book:3, n:1, heading:'Sounding out words with help!', time:'10\u201315 min',
+    need:'First 5 word card pairs WITH English transliteration.', activity:'reading', words:'set1', help:true },
+  { key:'session', title:'Book 3 · Session 3', book:3, n:3, heading:'Sounding out words, NO help!', time:'10\u201315 min',
+    need:'First 5 word card pairs WITHOUT English transliteration.', activity:'reading', words:'set1', help:false },
+  { key:'session', title:'Book 3 · Session 4', book:3, n:4, heading:'Sounding out more words!', time:'10\u201315 min',
+    need:'Next 5 word card pairs WITH and WITHOUT transliteration.', activity:'reading', words:'set2', help:true },
+  { key:'session', title:'Book 3 · Session 6', book:3, n:6, heading:'Reading the words with pictures!', time:'10\u201315 min',
+    need:'Reading Book 4, with word and picture pages.', activity:'reading', words:'set2', help:false,
+    badge:'You\u2019ve completed Stage 1!' },
+  { key:'glossary', title:'Stage 1 Glossary' },
+  { key:'stage2', title:'Ready for Stage 2?' },
+  { key:'author', title:'About the author' }
+];
 
-  let stars = 0;
-  let currentBook = 1;
+const WORD_SETS = {
+  session2: [['ਹਾ','ਹਾਗ','ਹਾਮ','ਹਾਗਾ','ਹਾਮਾ'],['ਰਾਹ','ਰਾਗ','ਰਾਮ','ਰਾਗਾ','ਰਾਮਾ'],['ਗਾਹ','ਗਾਰ','ਗਾਮ','ਗਾਗਾ','ਗਾਮਾ'],['ਮਾਹ','ਮਾਰ','ਮਾਗ','ਮਾਗਾ','ਮਾਮਾ'],['ਸਾਹ','ਸਾਰ','ਸਾਗ','ਸਾਗਾ','ਸਾਮਾ']],
+  session3: [['ਹਾਹਾ','ਹਾਗ','ਹਾਰਾ','ਹਾਮਾ','ਹਾਗਾ','ਹਾਮਾ'],['ਰਾਹ','ਰਾਰ','ਰਾਗਾ','ਰਾਮ','ਰਾਗਾ','ਰਾਮ']],
+  session5: [['ਹਾਂ','ਹਾਂਰ','ਹਾਂਮ','ਹਾਂਗਾ','ਹਾਂਮਾ'],['ਰਾਂਹ','ਰਾਂਰ','ਰਾਂਮ','ਰਾਂਗਾ','ਰਾਂਮ']]
+};
+const GLOSSARY = [
+  {g:'ਸਸਾ',r:'s saa',def:'4th letter of the Punjabi alphabet \u2019ਸ\u2018'},
+  {g:'ਸਾਹ',r:'saah',def:'breath, rest, respite, relaxation'},
+  {g:'ਸਾਰ',r:'saar',def:'summary, knowledge, steel'},
+  {g:'ਸਮਾਂ',r:'s maan',def:'time period, duration, season'},
+  {g:'ਸਾਗ',r:'saag',def:'Punjabi dish made with mustard and spinach leaves'},
+  {g:'ਸਾਰਾ',r:'saaraa',def:'whole, entire, complete, total'},
+  {g:'ਸਾਗਰ',r:'saagr',def:'sea, ocean'},
+  {g:'ਸਹਾਰਾ',r:'s haaraa',def:'support, refuge, shelter, dependence'},
+  {g:'ਸਾਂਗ',r:'saang',def:'mimicry, drama; kind of spear'},
+  {g:'ਹਾਰ',r:'haar',def:'necklace, garland'},
+  {g:'ਹਾਸਾ',r:'haasaa',def:'laughter, giggle, chuckle, ridicule'},
+  {g:'ਹਾਹ',r:'haah',def:'lamentation or curse esp. as a result of cruelty'},
+  {g:'ਹਾਹਾ',r:'haahaa',def:'the 5th letter of Punjabi alphabet \u2019ਹ\u2018'},
+  {g:'ਹਰਾ',r:'hraa',def:'colour GREEN, fresh'},
+  {g:'ਹਰਾਮ',r:'hraam',def:'forbidden, prohibited, morally wrong, sinful'},
+  {g:'ਗਾਰ',r:'gaar',def:'cave; silt, suspended dirt in water'},
+  {g:'ਗਾਰਾ',r:'gaaraa',def:'mortar of mud or cement and sand used for building'},
+  {g:'ਗਰਮ',r:'graam',def:'unit of measure for mass; village'},
+  {g:'ਗਾਹ',r:'gaah',def:'spread of harvested crop awaiting threshing; things lying helter skelter'},
+  {g:'ਗਰਾਰਾ',r:'graaraa',def:'loose fitting trousers; gargle'},
+  {g:'ਮਾਂ',r:'maan',def:'mother (the "n" is nasal only)'},
+  {g:'ਮਾਂਗ',r:'maang',def:'demand; parting line of hair on the head'},
+  {g:'ਮਾਸਾ',r:'maasaa',def:'weight roughly equal to one gram; small portion'},
+  {g:'ਮਸਾਂ',r:'msaan',def:'with difficulty, scarcely, after a great deal of effort'},
+  {g:'ਮਗਰ',r:'mgr',def:'crocodile; back, behind; but, however'},
+  {g:'ਮਾਰਗ',r:'maarg',def:'path, passage, way, road, highway, street, religion'},
+  {g:'ਮਾਮਾ',r:'mama',def:'maternal uncle'},
+  {g:'ਮਾਰ',r:'maar',def:'beating, strike, blow; prey, plunder, target'},
+  {g:'ਰਾਸ',r:'raas',def:'capital, investment; cape; dance, drama; reins; fit, suitable'},
+  {g:'ਰਾਹ',r:'raah',def:'pathway (same as ਰਸਤਾ "rstaa")'},
+  {g:'ਰਾਗ',r:'raag',def:'music, musical meter or measure'},
+  {g:'ਰਸਮ',r:'rsm',def:'custom, ceremony, rite, ritual, traditional practice'},
+  {g:'ਰਸਮਾਂ',r:'rsmaan',def:'plural of rsm — many customs, rituals'}
+];
+const STAGE1_BOOKS = [
+  {n:1,desc:'5 letters and "mukta" words (mukta = no accents / matras).'},
+  {n:2,desc:'5 letters, kanna and kanna bindi words.'},
+  {n:3,desc:'5 letters, kanna and kanna bindi words — making more words.'}
+];
 
-  const bookNav = document.getElementById('bookNav');
-  [1,2,3].forEach(n=>{
-    const b = document.createElement('button');
-    b.className = 'book-btn' + (n===1?' active':'');
-    b.textContent = 'Book ' + n;
-    b.onclick = ()=>{ currentBook = n; renderBook(); document.querySelectorAll('.book-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); };
-    bookNav.appendChild(b);
-  });
+function letterTile(l){
+  return `<div class="letter-tile" data-eng="${l.eng}" onclick="this.classList.add('done')">
+    <div class="gur">${l.gur}</div><div class="eng">${l.eng}</div></div>`;
+}
 
-  function updateStars(n){
-    stars += n;
-    const el = document.getElementById('starCount');
-    if(el) el.textContent = stars;
-  }
+function renderPage(p, idx){
+  const band = `<div class="page-band"><span>${p.title}</span><span class="sub">Rainbow Punjabi Accelerated Reading — Stage 1</span></div>`;
 
-  function renderBook(){
-    const panel = document.getElementById('bookPanel');
-    const letters = BOOK_LETTERS[currentBook];
-    let html = `
-      <div class="panel-head">
-        <h2>Stage 1 · Book ${currentBook}</h2>
-        <div class="stars">★ <span id="starCount">${stars}</span> gold stars</div>
-      </div>
-      <p class="note">${BOOK_TITLES[currentBook]} — say the sound, not the letter name.</p>
-      <div class="letter-row" id="letterRow"></div>
-    `;
-
-    if(currentBook === 2){
-      html += `
-      <div class="matra-box">
-        <div class="m">ਾ</div>
-        <div class="desc"><strong>Kanna</strong> — makes the "aa" sound. h + kanna = "haa".</div>
-        <div class="m">ਾਂ</div>
-        <div class="desc"><strong>Kanna Bindi</strong> — makes the nasal "aan" sound, not "n" as a letter.</div>
+  switch(p.key){
+    case 'cover':
+      return `<div class="cover-page">
+        <div class="cover-top">
+          <div class="tag">Stage 1 Guide</div>
+          <h1>Parent, Teacher, Self Learner Guide</h1>
+        </div>
+        <div class="cover-mid">
+          <div class="letters">ਹ ਰ ਗ ਮ ਸ</div>
+          <div class="letters-en" style="letter-spacing:26px;">h&nbsp;&nbsp;r&nbsp;&nbsp;g&nbsp;&nbsp;m&nbsp;&nbsp;s</div>
+          <h2>Learn Punjabi, Fast!</h2>
+          <p class="author">by Arvinder Singh Paul · Rainbow Punjabi Accelerated Reading</p>
+        </div>
       </div>`;
-    }
 
-    if(WORDS[currentBook]){
-      html += `<div class="word-builder" id="wordBuilder"></div>`;
-    }
+    case 'kit':
+      return `${band}<div class="page-inner">
+        <span class="eyebrow">Everything digital now</span>
+        <h2>What was in the physical pack — now built into this site</h2>
+        <p style="font-size:13px;color:rgba(27,36,48,0.6);">The original kit came as laminated cards, dry-wipe markers and a zipped wallet. Every activity below is the same game, just playable on screen.</p>
+        <div class="kit-grid">
+          <div class="kit-item"><span class="emoji">🗂️</span>Laminated cards</div>
+          <div class="kit-item"><span class="emoji">✏️</span>Dry wipe markers</div>
+          <div class="kit-item"><span class="emoji">⭐</span>Gold stars</div>
+          <div class="kit-item"><span class="emoji">📄</span>Writing practice sheets</div>
+          <div class="kit-item"><span class="emoji">🎒</span>Durable zipped wallet</div>
+          <div class="kit-item"><span class="emoji">📖</span>Learner guide</div>
+        </div>
+      </div>`;
 
-    html += `
-      <div class="game-tabs">
-        <button class="game-tab active" data-game="snap">Play Snap</button>
-        <button class="game-tab" data-game="memory">Play Memory</button>
-      </div>
-      <div id="snapGame">
-        <p class="game-instructions">Flip a card and say its sound aloud. If it matches the last one, hit Snap!</p>
-        <button class="flip-btn" id="flipBtn">Flip next card</button>
-        <div class="snap-cards" id="snapCards"></div>
-        <button class="snap-btn" id="snapCallBtn" disabled>SNAP!</button>
-        <p class="feedback" id="snapFeedback"></p>
-      </div>
-      <div id="memoryGame" style="display:none;">
-        <p class="game-instructions">Find the matching pairs, saying the sound each time you flip.</p>
-        <div class="memory-grid" id="memoryGrid"></div>
-        <p class="feedback" id="memoryFeedback"></p>
-      </div>
-    `;
-    panel.innerHTML = html;
+    case 'series':
+      return `<div class="page-inner" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;">
+        <span class="eyebrow">Rainbow</span>
+        <h1 style="font-size:34px;">Punjabi</h1>
+        <h3 style="color:rgba(27,36,48,0.6);font-weight:400;">Accelerated Reading Scheme</h3>
+        <p style="margin-top:24px;font-size:13px;color:rgba(27,36,48,0.5);">All rights reserved · © Arvinder Singh Paul 2025</p>
+        <div class="stage-chip-row" style="width:100%;max-width:420px;">
+          ${['#3E7D44','#E07B2E','#C1502E','#3E6E9E','#D9B23E','#999','#1A1A1A'].map((c,i)=>`<div class="stage-chip" style="background:${c}">Stage ${i+1}</div>`).join('')}
+        </div>
+      </div>`;
 
-    // letters
-    const letterRow = document.getElementById('letterRow');
-    letters.forEach(l=>{
-      const t = document.createElement('div');
-      t.className = 'letter-tile';
-      t.innerHTML = `<div class="gur">${l.gur}</div><div class="eng">${l.eng}</div>`;
-      t.onclick = ()=>{ t.style.borderColor = 'var(--sage)'; updateStars(1); };
-      letterRow.appendChild(t);
-    });
+    case 'tagline':
+      return `<div class="page-inner" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;">
+        <h1 style="font-size:30px;">Fastest way to learn<br>to read PUNJABI</h1>
+        <h2 style="color:var(--terracotta);font-size:26px;">5 letters at a time!</h2>
+        <p style="max-width:380px;color:rgba(27,36,48,0.6);">Graded and colour coded reading scheme for accelerated learning.</p>
+      </div>`;
 
-    // words
-    if(WORDS[currentBook]){
-      const wb = document.getElementById('wordBuilder');
-      WORDS[currentBook].forEach(w=>{
-        const c = document.createElement('div');
-        c.className = 'word-chip real';
-        c.innerHTML = `${w.gur}<span class="romani">${w.rom}</span>`;
-        wb.appendChild(c);
-      });
-    }
+    case 'stage1intro':
+      return `${band}<div class="page-inner">
+        <div style="background:var(--green);color:#fff;display:inline-block;padding:10px 26px;border-radius:6px;font-family:'Fraunces',serif;font-size:20px;margin-bottom:20px;">Green</div>
+        <div class="letter-row">${B1.map(l=>letterTile(l)).join('')}</div>
+        <p>and two accents or "matras":</p>
+        <div class="matra-box">
+          <div class="m">\u093E</div><div class="desc"><b>Kanna</b></div>
+          <div class="m">\u0901</div><div class="desc"><b>Kanna Bindi</b></div>
+        </div>
+        <p style="font-size:12px;color:rgba(27,36,48,0.5);">Tap each letter tile to mark it as familiar.</p>
+      </div>`;
 
-    document.querySelectorAll('.game-tab').forEach(btn=>{
-      btn.onclick = ()=>{
-        document.querySelectorAll('.game-tab').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        const g = btn.dataset.game;
-        document.getElementById('snapGame').style.display = g==='snap' ? 'block':'none';
-        document.getElementById('memoryGame').style.display = g==='memory' ? 'block':'none';
-      };
-    });
+    case 'letter':
+      return `${band}<div class="page-inner">
+        <h2>${p.heading}</h2>
+        ${p.body.map(b=>`<p>${b}</p>`).join('')}
+      </div>`;
 
-    setupSnap(letters);
-    setupMemory(letters);
+    case 'rules':
+      return `${band}<div class="page-inner">
+        <h2>✅ Before You Begin — A Few Simple Rules</h2>
+        <p style="font-size:13px;color:rgba(27,36,48,0.6);">These sessions are designed as fun, interactive games for you and your learner to enjoy together.</p>
+        <div class="rule-item"><span class="ic">🎉</span><div><b>Make it fun</b>If you're having fun, your learner will too!</div></div>
+        <div class="rule-item"><span class="ic">⭐</span><div><b>Use lots of praise</b>Celebrate every effort, not just correct answers. Give gold stars as reward.</div></div>
+        <div class="rule-item"><span class="ic">🔤</span><div><b>Focus on the letter sounds</b>Say "h" not "hahha", "r" not "rarra", "g" not "gagga".</div></div>
+        <div class="rule-item"><span class="ic">⏱️</span><div><b>Keep sessions short and sweet</b>10–15 minutes every day is perfect. Repeat sessions if needed.</div></div>
+        <div class="rule-item"><span class="ic">💡</span><div><b>Follow the sessions in order</b>Each one builds on the last.</div></div>
+        <div class="rule-item"><span class="ic">🛑</span><div><b>Stop when interest is lost</b>It's better to pause and come back later.</div></div>
+      </div>`;
+
+    case 'howto':
+      if(p.game === 'snap-howto'){
+        setTimeout(()=>mountSnap('howtoSnapMount', B1_3), 0);
+        return `${band}<div class="page-inner">
+          <h2>⭐ How to Play SNAP!</h2>
+          <p style="font-size:13px;color:rgba(27,36,48,0.6);">A fun way to practise Punjabi letters. Try it right here with the three Book 1 letters.</p>
+          <div id="howtoSnapMount"></div>
+        </div>`;
+      } else {
+        setTimeout(()=>mountMemory('howtoMemMount', B1_3), 0);
+        return `${band}<div class="page-inner">
+          <h2>⭐ How to Play MEMORY GAME!</h2>
+          <p style="font-size:13px;color:rgba(27,36,48,0.6);">Flip cards to find matching pairs, saying the sound aloud each time. Try it now.</p>
+          <div id="howtoMemMount"></div>
+        </div>`;
+      }
+
+    case 'overview':
+      return `${band}<div class="page-inner">
+        <h2>Guidance and detailed fun sessions</h2>
+        ${STAGE1_BOOKS.map(b=>`<div class="book-overview-card"><h3>Book ${b.n}</h3><p>${b.desc}</p></div>`).join('')}
+      </div>`;
+
+    case 'prep':
+      return `${band}<div class="page-inner">
+        <h2>Get ready for Book 1 games</h2>
+        <ol class="howto-steps">
+          <li>Take out only the Book 1 cards from the sleeve.</li>
+          <li>Carefully cut out the GREEN cards.</li>
+          <li>Place small letter cards in small pouches — 4×h in one, 4×r in another…</li>
+          <li>Place word cards in the large pouch.</li>
+          <li>Keep writing practice sheets in the A4 sleeve.</li>
+          <li>Know how to play SNAP and MEMORY (previous pages).</li>
+          <li>Keep everything together when not in use.</li>
+        </ol>
+        <p style="font-family:'Fraunces',serif;font-size:16px;color:var(--terracotta);">Follow the fun sessions in order →</p>
+      </div>`;
+
+    case 'session':
+      return renderSessionPage(p, idx);
+
+    case 'book2title':
+      return `<div class="page-inner" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;">
+        <h1>Book 2</h1>
+        <h3 style="font-weight:400;color:rgba(27,36,48,0.6);">Introducing the accents or "matras"</h3>
+        <div class="matra-box" style="margin-top:20px;">
+          <div class="m">ਹਾ</div><div class="desc">Kanna — "aa"</div>
+          <div class="m">ਹਾਂ</div><div class="desc">Kanna Bindi — "aan"</div>
+        </div>
+      </div>`;
+
+    case 'matras':
+      return `${band}<div class="page-inner">
+        <h2>The matras "kanna" and "kanna bindi"</h2>
+        <p>There are 12 matras and when one is attached to a letter, it applies a distinct sound to that letter. We use two in Book 2.</p>
+        <div class="matra-box">
+          <div class="m">ਾ</div>
+          <div class="desc">The <b>kanna</b> makes the "aa" sound, so h + kanna = "haa", r + kanna = "raa", g + kanna = "gaa".</div>
+        </div>
+        <div class="matra-box">
+          <div class="m">ਾਂ</div>
+          <div class="desc">The <b>kanna bindi</b> makes the nasal "aan" sound — not the letter "n". h + kanna bindi = "haan".</div>
+        </div>
+        <p style="font-size:12px;color:rgba(27,36,48,0.5);">Remember to say the SOUNDS only, not the names of the letters or matras.</p>
+      </div>`;
+
+    case 'book3title':
+      return `<div class="page-inner" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;">
+        <h1>Book 3</h1>
+        <h3 style="font-weight:400;color:rgba(27,36,48,0.6);">Making More Words</h3>
+        <p style="max-width:340px;color:rgba(27,36,48,0.55);margin-top:16px;">Book 4 is an illustrated reading book, used for Session 6.</p>
+      </div>`;
+
+    case 'glossary':
+      return `${band}<div class="page-inner">
+        <h2>Stage 1 Glossary</h2>
+        <input class="glossary-search" id="glossSearch" placeholder="Search a word or meaning…" oninput="filterGlossary(this.value)">
+        <div id="glossList">${GLOSSARY.map(g=>`<div class="gloss-row" data-search="${g.g} ${g.r} ${g.def}"><div class="g">${g.g}</div><div class="r">${g.r}</div><div>${g.def}</div></div>`).join('')}</div>
+        <p style="font-size:11px;color:rgba(27,36,48,0.4);margin-top:14px;">Contains "some" of the words that can be made with Stage 1 letters and matras — not conclusive. Definitions from the Punjabi University (Patiala) Punjabi–English Dictionary.</p>
+      </div>`;
+
+    case 'stage2':
+      return `${band}<div class="page-inner">
+        <h2>Ready for Stage 2 (orange)?</h2>
+        <p>Stage 2 introduces 5 new letters and 2 new matras:</p>
+        <div class="letter-row">
+          ${['ਕ','ਤ','ਨ','ਪ','ਲ'].map(g=>`<div class="letter-tile"><div class="gur">${g}</div></div>`).join('')}
+        </div>
+        <p>Six illustrated reading books follow, with recurring characters:</p>
+        <div class="teaser-box">
+          <div class="char-row">
+            <span class="char-chip">Saran</span><span class="char-chip">Mehar</span>
+            <span class="char-chip">Kaaka</span><span class="char-chip">Papa</span>
+          </div>
+          <p style="margin-top:12px;margin-bottom:0;font-size:12px;color:rgba(27,36,48,0.55);">Stage 2 content will go live here once confirmed — Books 6–11 include titles like "Laal Car" (Red Car) and "Garm Garm" (Hot Hot).</p>
+        </div>
+      </div>`;
+
+    case 'author':
+      return `${band}<div class="page-inner">
+        <h2>About the author</h2>
+        <div class="author-card">
+          <div class="author-photo">🧔🏽</div>
+          <div>
+            <h3 style="margin-bottom:4px;">Arvinder Singh Paul</h3>
+            <p style="font-size:13px;">Born in Punjab, India, and moved to London, UK at age 8. A retired Primary School teacher and teacher trainer with a lifelong passion for Punjabi, Sikhi and special needs education.</p>
+            <p style="font-size:13px;">Inspired by their special needs daughter, Gurleen, Arvinder and his wife Sandeep founded Rainbow Schools — a charity supporting special needs children in India.</p>
+            <p style="font-size:13px;">All proceeds from this scheme go towards building a dedicated school for special needs children in Punjab.</p>
+          </div>
+        </div>
+      </div>`;
+  }
+  return `${band}<div class="page-inner"><p>Page content</p></div>`;
+}
+
+function renderSessionPage(p, idx){
+  const band = `<div class="page-band"><span>${p.title}</span><span class="sub">Rainbow Punjabi Accelerated Reading — Stage 1</span></div>`;
+  let activityHtml = '';
+  const mountId = 'mount_' + idx;
+
+  if(p.activity === 'intro' || p.activity === 'memory' || p.activity === 'snap'){
+    activityHtml = `<div class="letter-row">${p.letters.map(l=>letterTile(l)).join('')}</div><div id="${mountId}"></div>`;
+  } else if(p.activity === 'matra-intro'){
+    activityHtml = `<div class="matra-box"><div class="m">${p.matra.sym}</div><div class="desc">Makes the "${p.matra.sound}" sound when attached to a letter.</div></div><div class="letter-row">${p.letters.map(l=>letterTile(l)).join('')}</div><div id="${mountId}"></div>`;
+  } else {
+    activityHtml = `<div id="${mountId}"></div>`;
   }
 
-  function setupSnap(letters){
-    let deck = [], lastCard = null;
-    function build(){
-      let d = [];
-      letters.forEach(l=>{ d.push(l); d.push(l); });
-      for(let i=d.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [d[i],d[j]]=[d[j],d[i]]; }
-      return d;
+  const badge = p.badge ? `<div style="margin-top:16px;background:var(--green);color:#fff;display:inline-block;padding:8px 18px;border-radius:20px;font-size:12px;font-family:'Space Mono',monospace;">${p.badge}</div>` : '';
+
+  const html = `${band}<div class="page-inner">
+    <div class="session-header"><h2>${p.heading}</h2><span class="session-time">${p.time}</span></div>
+    <p class="session-need">What you need: ${p.need}</p>
+    ${activityHtml}
+    ${badge}
+  </div>`;
+
+  setTimeout(()=>{
+    if(p.activity === 'memory'){
+      mountMemory(mountId, p.letters);
+    } else if(p.activity === 'snap'){
+      mountSnap(mountId, p.letters);
+    } else if(p.activity === 'matra-intro'){
+      mountSnap(mountId, p.letters);
+    } else if(p.activity === 'wordbuild'){
+      mountWordBuild(mountId);
+    } else if(p.activity === 'snap-words'){
+      mountSnap(mountId, [{gur:'ਹਰ',eng:'hr'},{gur:'ਹਸ',eng:'hs'},{gur:'ਗਰਮ',eng:'grm'}]);
+    } else if(p.activity === 'wordtable'){
+      mountWordTable(mountId, p.table);
+    } else if(p.activity === 'wordgrid'){
+      mountWordGrid(mountId);
+    } else if(p.activity === 'wordgrid2'){
+      mountWordGrid(mountId, true);
+    } else if(p.activity === 'reading'){
+      mountReading(mountId, p.words, p.help);
     }
-    function reset(){
-      deck = build(); lastCard = null;
-      document.getElementById('snapCards').innerHTML = '';
-      document.getElementById('snapCallBtn').disabled = true;
-      document.getElementById('snapFeedback').textContent = '';
-    }
-    document.getElementById('flipBtn').onclick = ()=>{
-      if(deck.length===0){ document.getElementById('snapFeedback').textContent='Deck finished — reshuffling!'; reset(); return; }
-      const card = deck.pop();
+  }, 0);
+
+  return html;
+}
+
+function mountSnap(mountId, letters){
+  const mount = document.getElementById(mountId);
+  if(!mount) return;
+  mount.innerHTML = `
+    <button class="flip-btn" id="${mountId}_flip">Flip next card</button>
+    <div class="snap-cards" id="${mountId}_cards"></div>
+    <button class="snap-btn" id="${mountId}_call" disabled>SNAP!</button>
+    <p class="feedback" id="${mountId}_fb"></p>`;
+  let deck = [], lastCard = null;
+  function build(){
+    let d = [];
+    letters.forEach(l=>{ d.push(l); d.push(l); });
+    for(let i=d.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [d[i],d[j]]=[d[j],d[i]]; }
+    return d;
+  }
+  function reset(){
+    deck = build(); lastCard = null;
+    document.getElementById(mountId+'_cards').innerHTML='';
+    document.getElementById(mountId+'_call').disabled = true;
+    document.getElementById(mountId+'_fb').textContent = '';
+  }
+  document.getElementById(mountId+'_flip').onclick = ()=>{
+    if(deck.length===0){ document.getElementById(mountId+'_fb').textContent='Deck finished — reshuffling!'; reset(); return; }
+    const card = deck.pop();
+    const el = document.createElement('div');
+    el.className='snap-card'; el.textContent = card.gur;
+    document.getElementById(mountId+'_cards').appendChild(el);
+    document.getElementById(mountId+'_fb').textContent = 'Say it: "' + card.eng + '"';
+    const match = lastCard && lastCard.eng === card.eng;
+    document.getElementById(mountId+'_call').disabled = !match;
+    lastCard = card;
+  };
+  document.getElementById(mountId+'_call').onclick = ()=>{
+    document.getElementById(mountId+'_fb').textContent = 'SNAP! Gold star earned.';
+    addStars(1);
+    document.getElementById(mountId+'_call').disabled = true;
+  };
+  reset();
+}
+
+function mountMemory(mountId, letters){
+  const mount = document.getElementById(mountId);
+  if(!mount) return;
+  mount.innerHTML = `<div class="memory-grid" id="${mountId}_grid"></div><p class="feedback" id="${mountId}_fb"></p>`;
+  let deck, flipped=[], matched=0, lock=false;
+  function build(){
+    let d = [];
+    letters.forEach((l,i)=>{ d.push({...l,id:i+'a'}); d.push({...l,id:i+'b'}); });
+    for(let i=d.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [d[i],d[j]]=[d[j],d[i]]; }
+    return d;
+  }
+  function reset(){
+    deck = build(); flipped=[]; matched=0; lock=false;
+    const grid = document.getElementById(mountId+'_grid');
+    grid.innerHTML='';
+    document.getElementById(mountId+'_fb').textContent='';
+    deck.forEach((card,idx)=>{
       const el = document.createElement('div');
-      el.className = 'snap-card';
-      el.textContent = card.gur;
-      document.getElementById('snapCards').appendChild(el);
-      document.getElementById('snapFeedback').textContent = 'Say it: "' + card.eng + '"';
-      const match = lastCard && lastCard.eng === card.eng;
-      document.getElementById('snapCallBtn').disabled = !match;
-      lastCard = card;
-    };
-    document.getElementById('snapCallBtn').onclick = ()=>{
-      document.getElementById('snapFeedback').textContent = 'SNAP! Gold star earned.';
-      updateStars(1);
-      document.getElementById('snapCallBtn').disabled = true;
-    };
-    reset();
+      el.className='memory-card';
+      el.onclick = ()=>flip(idx, el);
+      grid.appendChild(el);
+    });
   }
-
-  function setupMemory(letters){
-    let deck, flipped = [], matched = 0, lock = false;
-    function build(){
-      let d = [];
-      letters.forEach((l,i)=>{ d.push({...l,id:i+'a'}); d.push({...l,id:i+'b'}); });
-      for(let i=d.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [d[i],d[j]]=[d[j],d[i]]; }
-      return d;
-    }
-    function reset(){
-      deck = build(); flipped = []; matched = 0; lock = false;
-      const grid = document.getElementById('memoryGrid');
-      grid.innerHTML = '';
-      document.getElementById('memoryFeedback').textContent = '';
-      deck.forEach((card, idx)=>{
-        const el = document.createElement('div');
-        el.className = 'memory-card';
-        el.onclick = ()=>flip(idx, el);
-        grid.appendChild(el);
-      });
-    }
-    function flip(idx, el){
-      if(lock || el.classList.contains('flipped') || el.classList.contains('matched')) return;
-      el.textContent = deck[idx].gur;
-      el.classList.add('flipped');
-      flipped.push({idx, el});
-      if(flipped.length === 2){
-        lock = true;
-        const [a,b] = flipped;
-        if(deck[a.idx].eng === deck[b.idx].eng){
-          a.el.classList.add('matched'); b.el.classList.add('matched');
-          document.getElementById('memoryFeedback').textContent = 'Matched "' + deck[a.idx].eng + '" — gold star!';
-          updateStars(1);
-          matched++;
-          flipped = []; lock = false;
-          if(matched === letters.length){
-            document.getElementById('memoryFeedback').textContent = 'All pairs found! Well done.';
-          }
-        } else {
-          setTimeout(()=>{
-            a.el.classList.remove('flipped'); a.el.textContent='';
-            b.el.classList.remove('flipped'); b.el.textContent='';
-            flipped = []; lock = false;
-          }, 700);
-        }
+  function flip(idx, el){
+    if(lock || el.classList.contains('flipped') || el.classList.contains('matched')) return;
+    el.textContent = deck[idx].gur;
+    el.classList.add('flipped');
+    flipped.push({idx,el});
+    if(flipped.length===2){
+      lock = true;
+      const [a,b] = flipped;
+      if(deck[a.idx].eng === deck[b.idx].eng){
+        a.el.classList.add('matched'); b.el.classList.add('matched');
+        document.getElementById(mountId+'_fb').textContent = 'Matched "'+deck[a.idx].eng+'" — gold star!';
+        addStars(1); matched++;
+        flipped=[]; lock=false;
+        if(matched===letters.length) document.getElementById(mountId+'_fb').textContent='All pairs found! Well done.';
+      } else {
+        setTimeout(()=>{
+          a.el.classList.remove('flipped'); a.el.textContent='';
+          b.el.classList.remove('flipped'); b.el.textContent='';
+          flipped=[]; lock=false;
+        },700);
       }
     }
-    reset();
   }
+  reset();
+}
 
-  renderBook();
+function mountWordBuild(mountId){
+  const mount = document.getElementById(mountId);
+  if(!mount) return;
+  const words = [{gur:'ਹਰ',eng:'hr',mean:'God'},{gur:'ਹਸ',eng:'hs',mean:'Laugh'},{gur:'ਗਰਮ',eng:'grm',mean:'Hot'}];
+  mount.innerHTML = `<p style="font-size:12px;color:rgba(27,36,48,0.6);">Tap a card to reveal its meaning.</p><div class="word-cards">${
+    words.map(w=>`<div class="wc" onclick="this.classList.add('revealed'); this.querySelector('.rom').textContent='${w.mean}';">${w.gur}<span class="rom">${w.eng}</span></div>`).join('')
+  }</div>`;
+}
+
+function mountWordTable(mountId, tableKey){
+  const mount = document.getElementById(mountId);
+  if(!mount) return;
+  const rows = WORD_SETS[tableKey] || [];
+  const letters = ['h','r','g','m','s'];
+  let html = `<p style="font-size:12px;color:rgba(27,36,48,0.6);">Tap any word to sound it out (green = real word).</p><table class="word-table"><tr><th></th>${letters.slice(0,(rows[0]||[]).length).map(l=>`<th>${l}</th>`).join('')}</tr>`;
+  rows.forEach((row,ri)=>{
+    html += `<tr><th>${letters[ri]||''}</th>${row.map((w,i)=>`<td class="${i%3===0?'real':'silly'}" onclick="this.style.color='var(--terracotta)'">${w}</td>`).join('')}</tr>`;
+  });
+  html += `</table>`;
+  mount.innerHTML = html;
+}
+
+function mountWordGrid(mountId){
+  const mount = document.getElementById(mountId);
+  if(!mount) return;
+  const letters = ['ਹਾ','ਰਾ','ਗਾ','ਮਾ','ਸਾ'];
+  let html = `<p style="font-size:12px;color:rgba(27,36,48,0.6);">Green words are real — check the glossary page for meanings.</p><table class="word-table"><tr><th></th>${letters.map(l=>`<th>${l}</th>`).join('')}</tr>`;
+  letters.forEach((rowL,ri)=>{
+    html += `<tr><th>${rowL}</th>`;
+    letters.forEach((colL,ci)=>{
+      const real = (ri+ci)%2===0;
+      html += `<td class="${real?'real':'silly'}">${rowL}${colL}</td>`;
+    });
+    html += `</tr>`;
+  });
+  html += `</table>`;
+  mount.innerHTML = html;
+}
+
+function mountReading(mountId, setKey, showHelp){
+  const mount = document.getElementById(mountId);
+  if(!mount) return;
+  const words = [
+    {gur:'ਸਮਰ',rom:'smr',mean:'summer'},{gur:'ਹਾਰ',rom:'haar',mean:'necklace'},
+    {gur:'ਹਾਗ',rom:'haag',mean:''},{gur:'ਸਾਗ',rom:'saag',mean:'saag dish'},
+    {gur:'ਮਾਮਾ',rom:'mama',mean:'maternal uncle'}
+  ];
+  mount.innerHTML = `<p style="font-size:12px;color:rgba(27,36,48,0.6);">${showHelp?'Transliteration shown to help you sound it out.':'No help this time — sound it out yourself, then tap to check!'}</p>
+    <div class="word-cards">${words.map(w=>`
+      <div class="wc" onclick="this.classList.add('revealed'); this.querySelector('.rom').textContent='${w.mean||w.rom}';">
+        ${w.gur}<span class="rom">${showHelp ? w.rom : '?'}</span>
+      </div>`).join('')}</div>`;
+}
+
+function filterGlossary(q){
+  const rows = document.querySelectorAll('#glossList .gloss-row');
+  const query = q.toLowerCase();
+  rows.forEach(r=>{
+    const match = r.dataset.search.toLowerCase().includes(query);
+    r.style.display = match ? 'flex' : 'none';
+  });
+}
+
+const bookEl = document.getElementById('book');
+let current = 0;
+const total = PAGES.length;
+
+function buildPages(){
+  bookEl.innerHTML = '';
+  PAGES.forEach((p, i)=>{
+    const div = document.createElement('div');
+    div.className = 'page';
+    div.style.zIndex = total - i;
+    div.innerHTML = `${renderPage(p,i)}<div class="page-num">${i+1} / ${total}</div>`;
+    bookEl.appendChild(div);
+  });
+  updateStack();
+}
+
+function updateStack(){
+  const pages = bookEl.querySelectorAll('.page');
+  pages.forEach((el,i)=>{
+    if(i < current){
+      el.style.transform = 'rotateY(-170deg)';
+      el.style.zIndex = i;
+    } else {
+      el.style.transform = 'rotateY(0deg)';
+      el.style.zIndex = total - i;
+    }
+  });
+  document.getElementById('pageIndicator').textContent = `Page ${current+1} / ${total}`;
+  document.getElementById('prevBtn').disabled = current===0;
+  document.getElementById('nextBtn').disabled = current===total-1;
+  document.getElementById('jumpSelect').value = current;
+}
+
+document.getElementById('prevBtn').onclick = ()=>{ if(current>0){ current--; updateStack(); } };
+document.getElementById('nextBtn').onclick = ()=>{ if(current<total-1){ current++; updateStack(); } };
+document.addEventListener('keydown', e=>{
+  if(e.key==='ArrowRight') document.getElementById('nextBtn').click();
+  if(e.key==='ArrowLeft') document.getElementById('prevBtn').click();
+});
+
+const jumpSelect = document.getElementById('jumpSelect');
+PAGES.forEach((p,i)=>{
+  const opt = document.createElement('option');
+  opt.value = i; opt.textContent = (i+1)+'. '+p.title;
+  jumpSelect.appendChild(opt);
+});
+jumpSelect.onchange = ()=>{ current = parseInt(jumpSelect.value); updateStack(); };
+
+buildPages();
 </script>
 
 </body>
