@@ -166,9 +166,26 @@
   .char-chip{font-family:'Space Mono',monospace;font-size:11px;background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:14px;}
 
   @media (max-width:640px){
-    .page-inner{padding:30px 22px 30px;}
-    .cover-mid .letters{font-size:36px;}
-    .memory-grid{grid-template-columns:repeat(4,1fr);}
+    .topbar{height:50px;padding:0 14px;}
+    .topbar .logo{font-size:12px;}
+    .stars-badge{font-size:11px;padding:4px 9px;}
+    .stage{top:50px;bottom:64px;padding:10px;}
+    .controls{height:64px;gap:10px;}
+    .nav-btn{width:38px;height:38px;font-size:15px;}
+    .page-indicator{font-size:11px;min-width:56px;}
+    .jump-select{max-width:120px;font-size:11px;padding:7px 10px;}
+    .page-band{padding:11px 20px;font-size:13px;flex-wrap:wrap;gap:2px;}
+    .page-band .sub{font-size:10px;}
+    .page-inner{padding:22px 18px 26px;}
+    .page-num{font-size:10px;bottom:8px;right:12px;}
+    .cover-mid .letters{font-size:32px;}
+    .cover-top h1{font-size:19px;}
+    .kit-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+    .memory-grid{grid-template-columns:repeat(4,1fr);gap:6px;}
+    .letter-tile{width:56px;height:66px;}
+    .word-table{display:block;overflow-x:auto;white-space:nowrap;}
+    .word-table th,.word-table td{padding:6px;font-size:12px;}
+    .snap-card{width:52px;height:62px;font-size:22px;}
   }
 </style>
 </head>
@@ -780,6 +797,19 @@ document.addEventListener('keydown', e=>{
   if(e.key==='ArrowRight') document.getElementById('nextBtn').click();
   if(e.key==='ArrowLeft') document.getElementById('prevBtn').click();
 });
+
+let touchStartX = null;
+const stageEl = document.querySelector('.stage');
+stageEl.addEventListener('touchstart', e=>{ touchStartX = e.changedTouches[0].clientX; }, {passive:true});
+stageEl.addEventListener('touchend', e=>{
+  if(touchStartX === null) return;
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if(Math.abs(dx) > 50){
+    if(dx < 0) document.getElementById('nextBtn').click();
+    else document.getElementById('prevBtn').click();
+  }
+  touchStartX = null;
+}, {passive:true});
 
 const jumpSelect = document.getElementById('jumpSelect');
 PAGES.forEach((p,i)=>{
