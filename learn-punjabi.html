@@ -28,12 +28,16 @@
     position:fixed;top:0;left:0;right:0;height:56px;z-index:100;
     background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:space-between;
     padding:0 20px;border-bottom:1px solid rgba(255,255,255,0.08);
+    gap:10px;
   }
-  .topbar .logo{font-family:'Fraunces',serif;font-size:15px;display:flex;align-items:center;gap:8px;}
-  .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--marigold);}
-  .topbar a.back{font-size:12px;color:rgba(255,255,255,0.55);text-decoration:none;}
+  .topbar .logo{font-family:'Fraunces',serif;font-size:15px;display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--marigold);flex-shrink:0;}
+  .logo .full{display:inline;}
+  .logo .short{display:none;}
+  .topbar a.back{font-size:12px;color:rgba(255,255,255,0.55);text-decoration:none;flex-shrink:0;white-space:nowrap;}
   .topbar a.back:hover{color:#fff;}
-  .stars-badge{font-family:'Space Mono',monospace;font-size:12px;color:var(--marigold);background:rgba(232,147,63,0.15);padding:5px 12px;border-radius:14px;}
+  .stars-badge{font-family:'Space Mono',monospace;font-size:12px;color:var(--marigold);background:rgba(232,147,63,0.15);padding:5px 12px;border-radius:14px;flex-shrink:0;white-space:nowrap;}
+  .topbar-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
 
   .stage{
     position:fixed;top:56px;bottom:76px;left:0;right:0;
@@ -166,10 +170,17 @@
   .char-chip{font-family:'Space Mono',monospace;font-size:11px;background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:14px;}
 
   @media (max-width:640px){
-    .topbar{height:50px;padding:0 14px;}
-    .topbar .logo{font-size:12px;}
-    .stars-badge{font-size:11px;padding:4px 9px;}
-    .stage{top:50px;bottom:64px;padding:10px;}
+    .topbar{height:52px;padding:0 12px;gap:6px;}
+    .topbar .logo{font-size:13px;max-width:34vw;}
+    .logo .full{display:none;}
+    .logo .short{display:inline;}
+    .back .full{display:none;}
+    .back .short{display:inline;}
+    .topbar-right{gap:8px;}
+    .back{font-size:11px;}
+    .stars-badge{font-size:10px;padding:4px 8px;}
+    .star-label{display:none;}
+    .stage{top:52px;bottom:64px;padding:10px;}
     .controls{height:64px;gap:10px;}
     .nav-btn{width:38px;height:38px;font-size:15px;}
     .page-indicator{font-size:11px;min-width:56px;}
@@ -197,10 +208,10 @@
 <body>
 
 <div class="topbar">
-  <div class="logo"><span class="dot"></span>Rainbow Punjabi Accelerated Reading</div>
-  <div style="display:flex;align-items:center;gap:14px;">
-    <div class="stars-badge">★ <span id="starTotal">0</span> gold stars</div>
-    <a class="back" href="index.html">← Rainbow Schools site</a>
+  <div class="logo"><span class="dot"></span><span class="full">Rainbow Punjabi Accelerated Reading</span><span class="short">Rainbow Punjabi</span></div>
+  <div class="topbar-right">
+    <div class="stars-badge">★ <span id="starTotal">0</span><span class="star-label"> gold stars</span></div>
+    <a class="back" href="index.html"><span class="full">← Rainbow Schools site</span><span class="short">← Rainbow Schools</span></a>
   </div>
 </div>
 
