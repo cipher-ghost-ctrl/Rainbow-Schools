@@ -186,6 +186,11 @@
     .word-table{display:block;overflow-x:auto;white-space:nowrap;}
     .word-table th,.word-table td{padding:6px;font-size:12px;}
     .snap-card{width:52px;height:62px;font-size:22px;}
+    .stage{perspective:none;}
+    .page{
+      box-shadow:0 8px 20px rgba(0,0,0,0.35);
+      transition:transform .32s ease, opacity .32s ease;
+    }
   }
 </style>
 </head>
@@ -774,15 +779,36 @@ function buildPages(){
   updateStack();
 }
 
+function isMobileView(){
+  return window.matchMedia('(max-width:640px)').matches;
+}
+
 function updateStack(){
   const pages = bookEl.querySelectorAll('.page');
+  const mobile = isMobileView();
   pages.forEach((el,i)=>{
-    if(i < current){
-      el.style.transform = 'rotateY(-170deg)';
-      el.style.zIndex = i;
+    if(mobile){
+      if(i === current){
+        el.style.transform = 'translateX(0)';
+        el.style.opacity = '1';
+        el.style.zIndex = total;
+        el.style.pointerEvents = 'auto';
+      } else {
+        el.style.transform = i < current ? 'translateX(-30px)' : 'translateX(30px)';
+        el.style.opacity = '0';
+        el.style.zIndex = 0;
+        el.style.pointerEvents = 'none';
+      }
     } else {
-      el.style.transform = 'rotateY(0deg)';
-      el.style.zIndex = total - i;
+      el.style.opacity = '';
+      el.style.pointerEvents = '';
+      if(i < current){
+        el.style.transform = 'rotateY(-170deg)';
+        el.style.zIndex = i;
+      } else {
+        el.style.transform = 'rotateY(0deg)';
+        el.style.zIndex = total - i;
+      }
     }
   });
   document.getElementById('pageIndicator').textContent = `Page ${current+1} / ${total}`;
@@ -790,6 +816,8 @@ function updateStack(){
   document.getElementById('nextBtn').disabled = current===total-1;
   document.getElementById('jumpSelect').value = current;
 }
+
+window.addEventListener('resize', ()=>updateStack());
 
 document.getElementById('prevBtn').onclick = ()=>{ if(current>0){ current--; updateStack(); } };
 document.getElementById('nextBtn').onclick = ()=>{ if(current<total-1){ current++; updateStack(); } };
