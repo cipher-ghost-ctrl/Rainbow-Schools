@@ -52,8 +52,8 @@
     display:flex;align-items:center;gap:10px;
   }
   .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--marigold);display:inline-block;}
-  nav.links{display:flex;gap:28px;font-size:14px;}
-  nav.links a{text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;}
+  nav.links{display:flex;gap:24px;font-size:14px;flex-wrap:wrap;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;white-space:nowrap;}
   nav.links a:hover{border-color:var(--terracotta);color:var(--ink);}
   .btn{
     display:inline-block;padding:11px 22px;border-radius:30px;
@@ -64,7 +64,6 @@
   .btn:hover{transform:translateY(-1px);}
   .btn.ghost{background:transparent;border:1px solid var(--ink);color:var(--ink);}
 
-  /* HERO */
   .hero{padding:100px 0 60px;position:relative;overflow:hidden;}
   .eyebrow{
     font-family:'Space Mono', monospace;font-size:12px;letter-spacing:.12em;
@@ -73,83 +72,67 @@
   .hero h1{font-size:clamp(36px,5.5vw,64px);max-width:820px;line-height:1.08;}
   .hero h1 em{font-style:italic;color:var(--terracotta);}
   .hero-sub{font-size:18px;color:var(--ink-soft);max-width:560px;margin-bottom:36px;}
-  .hero-cta{display:flex;gap:16px;align-items:center;margin-bottom:64px;}
+  .hero-cta{display:flex;gap:16px;align-items:center;margin-bottom:64px;flex-wrap:wrap;}
 
-  /* rainbow arc signature */
   .arc-wrap{width:100%;display:flex;justify-content:center;padding:20px 0 0;}
   svg.arc{width:100%;max-width:820px;height:auto;}
   .arc-band{transition:opacity .6s ease, stroke-dashoffset 1.2s ease;}
   .arc-labels{display:flex;justify-content:space-between;max-width:820px;margin:14px auto 0;font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;}
+  .arc-caption{text-align:center;font-size:13px;color:var(--ink-soft);margin-top:10px;}
+  .arc-caption a{color:var(--terracotta);font-weight:600;text-decoration:none;}
 
-  section{padding:80px 0;border-top:1px solid var(--line);}
-  .section-head{max-width:640px;margin-bottom:48px;}
+  section{padding:72px 0;border-top:1px solid var(--line);}
+  .section-head{max-width:640px;margin-bottom:44px;}
   .section-head .eyebrow{margin-bottom:12px;}
-  .section-head h2{font-size:clamp(28px,3.5vw,40px);}
-  .section-head p{color:var(--ink-soft);font-size:17px;}
+  .section-head h2{font-size:clamp(26px,3.2vw,36px);}
+  .section-head p{color:var(--ink-soft);font-size:16px;}
 
-  /* ABOUT */
-  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start;}
   .quote-block{
     background:var(--paper-2);border-radius:18px;padding:32px;
-    font-family:'Fraunces', serif;font-size:20px;line-height:1.5;color:var(--indigo);
+    font-family:'Fraunces', serif;font-size:19px;line-height:1.5;color:var(--indigo);
+    margin-bottom:44px;
   }
   .quote-block cite{display:block;margin-top:16px;font-family:'Work Sans';font-style:normal;font-size:13px;color:var(--ink-soft);}
 
-  /* CONDITIONS */
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
-  .chip{
-    padding:8px 16px;border-radius:20px;font-size:13px;
-    border:1px solid var(--line);background:#fff;color:var(--ink-soft);
+  /* HUB GRID — links out to every page */
+  .hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .hub-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;
+    text-decoration:none;color:inherit;display:block;transition:transform .15s ease, border-color .15s ease;
   }
+  .hub-card:hover{transform:translateY(-3px);border-color:var(--terracotta);}
+  .hub-card .icon{
+    width:42px;height:42px;border-radius:10px;background:var(--paper-2);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:19px;
+  }
+  .hub-card h3{font-size:16px;margin-bottom:6px;}
+  .hub-card p{font-size:13px;color:var(--ink-soft);margin-bottom:0;}
+  .hub-card .go{display:inline-block;margin-top:12px;font-family:'Space Mono',monospace;font-size:11px;color:var(--terracotta);}
 
-  /* PHASES / FUNDING */
-  .phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px;}
-  .phase-card{
-    background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;
+  .learn-teaser{
+    background:var(--indigo);color:#fff;border-radius:24px;padding:48px;
+    display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;
   }
-  .phase-card .band{width:36px;height:6px;border-radius:3px;margin-bottom:16px;}
-  .phase-card h3{font-size:16px;margin-bottom:6px;}
-  .phase-card p{font-size:14px;color:var(--ink-soft);margin-bottom:0;}
-  .progress-outer{height:8px;background:var(--paper-2);border-radius:6px;overflow:hidden;margin:28px 0 8px;}
-  .progress-inner{height:100%;background:linear-gradient(90deg,var(--marigold),var(--terracotta));width:28%;border-radius:6px;}
-  .progress-caption{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:12px;color:var(--ink-soft);}
+  .learn-teaser .eyebrow{color:var(--marigold);}
+  .learn-teaser h2{color:#fff;margin-bottom:8px;}
+  .learn-teaser p{color:rgba(255,255,255,0.7);margin-bottom:0;max-width:440px;}
 
-  /* PUNJABI SCHEME */
-  .scheme-wrap{
-    background:var(--indigo);color:#fff;border-radius:24px;padding:56px;
-  }
-  .scheme-wrap .eyebrow{color:var(--marigold);}
-  .scheme-wrap h2{color:#fff;}
-  .scheme-wrap p.lead{color:rgba(255,255,255,0.75);font-size:17px;max-width:600px;}
-  .lesson-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;}
-  .lesson-card{
-    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);
-    border-radius:14px;padding:22px;position:relative;
-  }
-  .lesson-card .ph{
-    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--marigold);margin-bottom:10px;display:block;
-  }
-  .lesson-card h3{color:#fff;font-size:17px;margin-bottom:8px;}
-  .lesson-card p{color:rgba(255,255,255,0.6);font-size:13px;margin-bottom:0;}
-  .placeholder-tag{
-    display:inline-block;margin-top:14px;font-size:11px;font-family:'Space Mono',monospace;
-    color:var(--marigold);border:1px dashed rgba(232,147,63,0.5);padding:4px 10px;border-radius:12px;
-  }
-
-  /* GET INVOLVED */
   .involve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .involve-card{padding:28px;border-radius:16px;background:#fff;border:1px solid var(--line);}
+  .involve-card{padding:28px;border-radius:16px;background:#fff;border:1px solid var(--line);text-decoration:none;color:inherit;display:block;}
   .involve-card .icon{
     width:40px;height:40px;border-radius:10px;background:var(--paper-2);
     display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:18px;
   }
   .involve-card h3{font-size:17px;}
-  .involve-card p{font-size:14px;color:var(--ink-soft);}
+  .involve-card p{font-size:14px;color:var(--ink-soft);margin-bottom:0;}
 
   footer{padding:56px 0 40px;border-top:1px solid var(--line);}
-  .footer-grid{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
-  .footer-note{font-size:13px;color:var(--ink-soft);max-width:420px;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+  .footer-note{font-size:13px;color:var(--ink-soft);max-width:340px;}
+  .footer-col h4{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:14px;}
+  .footer-col a{display:block;font-size:13px;color:var(--ink-soft);text-decoration:none;margin-bottom:9px;}
+  .footer-col a:hover{color:var(--terracotta);}
+  .footer-bottom{border-top:1px solid var(--line);padding-top:20px;font-size:12px;color:var(--ink-soft);}
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
@@ -166,7 +149,8 @@
   .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
   @media (max-width:820px){
-    .about-grid, .phase-grid, .involve-grid{grid-template-columns:1fr;}
+    .hub-grid, .involve-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;gap:24px;}
     .nav{padding:14px 18px;gap:10px;}
     .logo{font-size:16px;gap:7px;white-space:nowrap;}
     .btn{padding:9px 16px;font-size:13px;flex-shrink:0;}
@@ -179,10 +163,11 @@
       transition:max-height .3s ease, padding .3s ease;
       z-index:60;
     }
-    nav.links.open{ max-height:320px; padding:12px 20px 18px; }
+    nav.links.open{ max-height:calc(100vh - 64px); padding:12px 20px 18px; overflow-y:auto; }
     nav.links a{ padding:12px 0; width:100%; border-bottom:1px solid var(--line); }
     nav.links a:last-child{ border-bottom:none; }
     .arc-labels{font-size:10px;}
+    .learn-teaser{padding:32px 24px;flex-direction:column;align-items:flex-start;}
   }
   @media (max-width:480px){
     .nav{padding:12px 14px;gap:8px;}
@@ -193,7 +178,6 @@
     .hamburger span{width:18px;}
     .hero{padding:70px 0 40px;}
     .hero-cta{flex-direction:column;align-items:flex-start;gap:10px;}
-    .involve-grid, .phase-grid{gap:16px;}
   }
 </style>
 </head>
@@ -203,10 +187,14 @@
   <div class="nav">
     <div class="logo"><span class="dot"></span>Rainbow Schools</div>
     <nav class="links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#children">Who we support</a>
-      <a href="#centre">Rainbow Centre Punjab</a>
-      <a href="#involved">Get involved</a>
+      <a href="about.html">About</a>
+      <a href="vulnerable-children.html">Who we support</a>
+      <a href="rainbow-centre-punjab.html">Rainbow Centre Punjab</a>
+      <a href="first-phase.html">First Phase</a>
+      <a href="get-involved.html">Get involved</a>
+      <a href="our-story.html">Our story</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
       <a href="learn-punjabi.html" class="learn-nav-link">Learn Punjabi</a>
     </nav>
     <div style="display:flex;align-items:center;gap:10px;">
@@ -242,59 +230,89 @@
     <span>Centre build</span>
     <span>Open &amp; teaching</span>
   </div>
+  <p class="arc-caption wrap">£14,236 raised of £50,000 · <a href="first-phase.html">see the full funding breakdown →</a></p>
 </section>
 
-<section id="about">
+<section id="mission">
   <div class="wrap">
-    <div class="about-grid">
-      <div class="reveal">
-        <span class="eyebrow">Our story</span>
-        <h2>Founded on a family's own journey.</h2>
-        <p>Since 1999, founders Arvinder Singh Paul and Sandeep Kaur Paul have visited centres across India supporting disabled and orphaned children — inspired by their own daughter, Gurleen. Most centres they saw provided shelter, but few offered a truly holistic, inclusive education.</p>
-        <p>Rainbow Centre Punjab is their answer: a purpose-built, research-led centre designed to be a model for inclusive education across India — eco-friendly, therapy-integrated, and open to the wider community.</p>
-        <div class="chips">
-          <span class="chip">Autism spectrum</span>
-          <span class="chip">Cerebral palsy</span>
-          <span class="chip">ADHD</span>
-          <span class="chip">Down's syndrome</span>
-          <span class="chip">Sensory processing</span>
-          <span class="chip">Learning difficulties</span>
-        </div>
-      </div>
-      <div class="quote-block reveal">
-        "A world where every child, regardless of ability, lives a happy, safe and fulfilled life."
-        <cite>— Rainbow Schools, our vision</cite>
-      </div>
+    <div class="quote-block reveal">
+      "A world where every child, regardless of ability, lives a happy, safe and fulfilled life."
+      <cite>— Rainbow Schools, our vision</cite>
+    </div>
+    <div class="section-head reveal">
+      <span class="eyebrow">Since 1999</span>
+      <h2>Founded on a family's own journey.</h2>
+      <p>Founders Arvinder Singh Paul and Sandeep Kaur Paul have visited centres across India supporting disabled and orphaned children — inspired by their own daughter, Gurleen. Rainbow Centre Punjab is their answer: a purpose-built, research-led centre designed to be a model for inclusive education across India.</p>
+    </div>
+
+    <div class="hub-grid reveal">
+      <a class="hub-card" href="about.html">
+        <div class="icon">📖</div>
+        <h3>About Us</h3>
+        <p>Our founding story, vision, mission, and the people behind Rainbow Schools.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="hub-card" href="vulnerable-children.html">
+        <div class="icon">🧩</div>
+        <h3>Who We Support</h3>
+        <p>The children and conditions we work with, and our free parent advice service.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="hub-card" href="rainbow-centre-punjab.html">
+        <div class="icon">🏫</div>
+        <h3>Rainbow Centre Punjab</h3>
+        <p>The land, the plan, and the advisory board guiding the build.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="hub-card" href="first-phase.html">
+        <div class="icon">🧱</div>
+        <h3>First Phase</h3>
+        <p>The full itemised funding breakdown — what's sponsored, what's still needed.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="hub-card" href="get-involved.html">
+        <div class="icon">🤝</div>
+        <h3>Get Involved</h3>
+        <p>Volunteer, fundraise, or become a Friend of Rainbow Schools.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="hub-card" href="our-story.html">
+        <div class="icon">🕰️</div>
+        <h3>Our Story</h3>
+        <p>The full timeline — from a 2009 fact-finding trip to the foundation stone laid in 2019.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="hub-card" href="resources.html">
+        <div class="icon">📚</div>
+        <h3>Resources</h3>
+        <p>The Punjabi Reading Scheme, our books, and learning-disability resources.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="hub-card" href="contact.html">
+        <div class="icon">✉️</div>
+        <h3>Contact Us</h3>
+        <p>Get in touch, or donate directly by UK or India bank transfer.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="hub-card" href="learn-punjabi.html" style="border-color:var(--terracotta);">
+        <div class="icon">🌈</div>
+        <h3>Learn Punjabi</h3>
+        <p>The full interactive Rainbow Punjabi Accelerated Reading Scheme — free, online.</p>
+        <span class="go">Start learning →</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section id="centre">
+<section id="learn">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Rainbow Centre Punjab — First Phase</span>
-      <h2>From bare land to an open centre.</h2>
-      <p>Three acres on the GT Road are already secured. Here's what's left to fund before the doors can open.</p>
-    </div>
-    <div class="progress-outer"><div class="progress-inner"></div></div>
-    <div class="progress-caption"><span>£14,236 raised</span><span>Target £50,000 (fundraiser) · £210,000 overall</span></div>
-
-    <div class="phase-grid reveal">
-      <div class="phase-card">
-        <div class="band" style="background:var(--indigo);"></div>
-        <h3>Boundary &amp; security</h3>
-        <p>Wall, gate and security rooms — largely sponsored, final stretch remaining.</p>
+    <div class="learn-teaser reveal">
+      <div>
+        <span class="eyebrow">New · fully digital</span>
+        <h2>Learn to read Punjabi, five letters at a time.</h2>
+        <p>The complete Rainbow Punjabi Accelerated Reading Scheme, rebuilt as an interactive online book — no physical kit required.</p>
       </div>
-      <div class="phase-card">
-        <div class="band" style="background:var(--sage);"></div>
-        <h3>Ground &amp; access</h3>
-        <p>Paths, rainwater harvesting, and highway access applications.</p>
-      </div>
-      <div class="phase-card">
-        <div class="band" style="background:var(--marigold);"></div>
-        <h3>Centre building</h3>
-        <p>The main teaching centre, volunteer housing, and sensory gardens.</p>
-      </div>
+      <a class="btn" href="learn-punjabi.html" style="background:var(--marigold);">Open the scheme →</a>
     </div>
   </div>
 </section>
@@ -306,17 +324,17 @@
       <h2>Three ways to help build this.</h2>
     </div>
     <div class="involve-grid reveal">
-      <div class="involve-card">
+      <a class="involve-card" href="get-involved.html">
         <div class="icon">🤝</div>
         <h3>Volunteer</h3>
         <p>Teaching, therapy, fundraising, design or social media — there's a role to fit your skills.</p>
-      </div>
-      <div class="involve-card">
+      </a>
+      <a class="involve-card" href="get-involved.html">
         <div class="icon">📣</div>
         <h3>Fundraise</h3>
         <p>Become a Friend of Rainbow Schools and run an event in your community.</p>
-      </div>
-      <a class="involve-card" href="https://www.gofundme.com/f/special-school-punjab?cp_src=d" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block;">
+      </a>
+      <a class="involve-card" href="https://www.gofundme.com/f/special-school-punjab?cp_src=d" target="_blank" rel="noopener">
         <div class="icon">💛</div>
         <h3>Donate</h3>
         <p>100% of donations go directly to Rainbow Centre Punjab.</p>
@@ -326,9 +344,32 @@
 </section>
 
 <footer>
-  <div class="wrap footer-grid">
-    <div class="logo"><span class="dot"></span>Rainbow Schools</div>
-    <p class="footer-note">UK registered Charity Number 1168048. Rainbow Charitable Trust, India. info@rainbowschools.co.uk</p>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo"><span class="dot"></span>Rainbow Schools</div>
+        <p class="footer-note" style="margin-top:14px;">A world where every child, regardless of ability, lives a happy, safe and fulfilled life.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="about.html">About Us</a>
+        <a href="vulnerable-children.html">Who We Support</a>
+        <a href="rainbow-centre-punjab.html">Rainbow Centre Punjab</a>
+        <a href="first-phase.html">First Phase</a>
+        <a href="our-story.html">Our Story</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get involved</h4>
+        <a href="get-involved.html">Volunteer &amp; Fundraise</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="learn-punjabi.html">Learn Punjabi</a>
+        <a href="https://www.gofundme.com/f/special-school-punjab?cp_src=d" target="_blank" rel="noopener">Donate</a>
+      </div>
+    </div>
+    <div class="footer-bottom wrap" style="padding-left:0;padding-right:0;">
+      UK registered Charity Number 1168048 · Rainbow Charitable Trust, India · info@rainbowschools.co.uk
+    </div>
   </div>
 </footer>
 
