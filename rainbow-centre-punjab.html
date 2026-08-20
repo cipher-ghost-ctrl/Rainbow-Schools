@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rainbow Centre Punjab — Rainbow Schools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF3E7;--paper-2:#F3E7D6;--ink:#1E2A38;--ink-soft:#4A5566;
+    --marigold:#E8933F;--terracotta:#C1502E;--sage:#6E8B5D;--indigo:#2F4C6B;
+    --line: rgba(30,42,56,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Work Sans', sans-serif;line-height:1.6;}
+  h1,h2,h3{font-family:'Fraunces', serif;font-weight:500;margin:0 0 0.5em;letter-spacing:-0.01em;}
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  header.site{position:sticky;top:0;z-index:50;background:rgba(251,243,231,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1080px;margin:0 auto;}
+  .logo{font-family:'Fraunces', serif;font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}
+  .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--marigold);display:inline-block;}
+  nav.links{display:flex;gap:24px;font-size:14px;flex-wrap:wrap;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;white-space:nowrap;}
+  nav.links a:hover{border-color:var(--terracotta);color:var(--ink);}
+  nav.links a.active{color:var(--terracotta);border-color:var(--terracotta);font-weight:600;}
+  nav.links a.learn-nav-link{color:var(--terracotta);font-weight:600;}
+  .btn{display:inline-block;padding:11px 22px;border-radius:30px;background:var(--terracotta);color:#fff;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.02em;transition:transform .15s ease;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:transparent;border:1px solid var(--ink);color:var(--ink);}
+
+  .page-hero{padding:64px 0 48px;}
+  .eyebrow{font-family:'Space Mono', monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--terracotta);margin-bottom:14px;display:block;}
+  .page-hero h1{font-size:clamp(30px,4.5vw,48px);max-width:720px;line-height:1.1;}
+  .page-hero p.lead{font-size:17px;color:var(--ink-soft);max-width:600px;}
+  .breadcrumb{font-size:12px;color:var(--ink-soft);margin-bottom:18px;}
+  .breadcrumb a{color:var(--ink-soft);text-decoration:none;}
+  .breadcrumb a:hover{color:var(--terracotta);}
+
+  section{padding:56px 0;border-top:1px solid var(--line);}
+  .section-head{max-width:640px;margin-bottom:36px;}
+  .section-head h2{font-size:clamp(24px,3vw,32px);}
+  .section-head p{color:var(--ink-soft);font-size:16px;}
+
+  .land-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:12px;}
+  .land-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center;}
+  .land-stat .val{font-family:'Fraunces',serif;font-size:26px;color:var(--terracotta);}
+  .land-stat .lbl{font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-top:6px;}
+
+  .board-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .board-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;gap:18px;align-items:flex-start;}
+  .board-photo{width:64px;height:64px;border-radius:50%;background:var(--paper-2);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+  .board-card h3{font-size:16px;margin-bottom:2px;}
+  .board-card .role{font-family:'Space Mono',monospace;font-size:11px;color:var(--terracotta);display:block;margin-bottom:8px;}
+  .board-card p{font-size:13px;color:var(--ink-soft);margin-bottom:8px;}
+  .board-card .linkedin{font-size:12px;color:var(--sage);text-decoration:none;font-weight:600;}
+  .board-card .linkedin:hover{text-decoration:underline;}
+
+  .next-links{display:flex;gap:16px;flex-wrap:wrap;}
+  .next-card{flex:1;min-width:220px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:transform .15s ease, border-color .15s ease;}
+  .next-card:hover{transform:translateY(-3px);border-color:var(--terracotta);}
+  .next-card .label{font-family:'Space Mono',monospace;font-size:11px;color:var(--marigold);}
+  .next-card h3{font-size:16px;margin:6px 0 0;}
+
+  footer{padding:56px 0 40px;border-top:1px solid var(--line);}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+  .footer-note{font-size:13px;color:var(--ink-soft);max-width:340px;}
+  .footer-col h4{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:14px;}
+  .footer-col a{display:block;font-size:13px;color:var(--ink-soft);text-decoration:none;margin-bottom:9px;}
+  .footer-col a:hover{color:var(--terracotta);}
+  .footer-bottom{border-top:1px solid var(--line);padding-top:20px;font-size:12px;color:var(--ink-soft);}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  .hamburger{display:none; background:transparent; border:none; cursor:pointer;width:34px;height:34px; flex-direction:column; align-items:center; justify-content:center; gap:5px;padding:0;}
+  .hamburger span{width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s, opacity .25s;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  @media (max-width:820px){
+    .board-grid,.land-stats{grid-template-columns:1fr;}
+    .nav{padding:14px 18px;gap:10px;}
+    .logo{font-size:16px;gap:7px;white-space:nowrap;}
+    .btn{padding:9px 16px;font-size:13px;flex-shrink:0;}
+    .hamburger{display:flex;flex-shrink:0;}
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;background:var(--paper); border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; gap:0;max-height:0; overflow:hidden; padding:0 20px;
+      transition:max-height .3s ease, padding .3s ease;z-index:60;
+    }
+    nav.links.open{ max-height:calc(100vh - 64px); padding:12px 20px 18px; overflow-y:auto; }
+    nav.links a{ padding:12px 0; width:100%; border-bottom:1px solid var(--line); }
+    nav.links a:last-child{ border-bottom:none; }
+  }
+  @media (max-width:480px){
+    .nav{padding:12px 14px;gap:8px;}
+    .logo{font-size:14px;}
+    .logo .dot{width:8px;height:8px;}
+    .btn{padding:8px 13px;font-size:12px;}
+    .hamburger{width:30px;height:30px;}
+    .hamburger span{width:18px;}
+    .page-hero{padding:44px 0 32px;}
+    .land-stats{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a class="logo" href="index.html"><span class="dot"></span>Rainbow Schools</a>
+    <nav class="links" id="navLinks">
+      <a href="about.html">About</a>
+      <a href="vulnerable-children.html">Who we support</a>
+      <a href="rainbow-centre-punjab.html" class="active">Rainbow Centre Punjab</a>
+      <a href="first-phase.html">First Phase</a>
+      <a href="get-involved.html">Get involved</a>
+      <a href="our-story.html">Our story</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+      <a href="learn-punjabi.html" class="learn-nav-link">Learn Punjabi</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a class="btn" href="https://www.gofundme.com/f/special-school-punjab?cp_src=d" target="_blank" rel="noopener">Donate</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero" style="border-top:none;">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="index.html">Home</a> / Rainbow Centre Punjab</p>
+    <span class="eyebrow">The centre</span>
+    <h1>From bare land to a real, open centre.</h1>
+    <p class="lead">A purpose-built, inclusive learning and vocational centre for disabled and orphaned children — designed to be a model for others across India.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="land-stats reveal">
+      <div class="land-stat"><div class="val">3 acres</div><div class="lbl">Land secured</div></div>
+      <div class="land-stat"><div class="val">GT Road</div><div class="lbl">Location</div></div>
+      <div class="land-stat"><div class="val">Fatehgarh Sahib</div><div class="lbl">District, Punjab</div></div>
+    </div>
+    <p class="reveal" style="color:var(--ink-soft);">Three acres of land on the GT Road in Fatehgarh Sahib district have already been secured — the essential first step before any construction could begin. See the <a href="first-phase.html" style="color:var(--terracotta);font-weight:600;">full funding breakdown on the First Phase page →</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Advisory Board</span>
+      <h2>The people guiding the build.</h2>
+      <p>A team of professionals in Punjab helping shape Rainbow Centre Punjab into a genuine model for inclusive education.</p>
+    </div>
+    <div class="board-grid reveal">
+      <div class="board-card">
+        <div class="board-photo">👤</div>
+        <div>
+          <h3>Advisory Board Member</h3>
+          <span class="role">Punjab Advisory Board</span>
+          <p>One of four professionals based in Punjab advising on the design and delivery of Rainbow Centre Punjab.</p>
+          <a class="linkedin" href="#">View LinkedIn profile →</a>
+        </div>
+      </div>
+      <div class="board-card">
+        <div class="board-photo">👤</div>
+        <div>
+          <h3>Advisory Board Member</h3>
+          <span class="role">Punjab Advisory Board</span>
+          <p>One of four professionals based in Punjab advising on the design and delivery of Rainbow Centre Punjab.</p>
+          <a class="linkedin" href="#">View LinkedIn profile →</a>
+        </div>
+      </div>
+      <div class="board-card">
+        <div class="board-photo">👤</div>
+        <div>
+          <h3>Advisory Board Member</h3>
+          <span class="role">Punjab Advisory Board</span>
+          <p>One of four professionals based in Punjab advising on the design and delivery of Rainbow Centre Punjab.</p>
+          <a class="linkedin" href="#">View LinkedIn profile →</a>
+        </div>
+      </div>
+      <div class="board-card">
+        <div class="board-photo">👤</div>
+        <div>
+          <h3>Advisory Board Member</h3>
+          <span class="role">Punjab Advisory Board</span>
+          <p>One of four professionals based in Punjab advising on the design and delivery of Rainbow Centre Punjab.</p>
+          <a class="linkedin" href="#">View LinkedIn profile →</a>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-soft);margin-top:16px;">Names, exact roles, photos and LinkedIn links to be added once confirmed with the client — the original site names all four with full bios.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Keep exploring</span>
+      <h2>Where to go next</h2>
+    </div>
+    <div class="next-links reveal">
+      <a class="next-card" href="first-phase.html">
+        <span class="label">Next</span>
+        <h3>See the First Phase funding breakdown →</h3>
+      </a>
+      <a class="next-card" href="get-involved.html">
+        <span class="label">Take action</span>
+        <h3>Get involved →</h3>
+      </a>
+      <a class="next-card" href="our-story.html">
+        <span class="label">Related</span>
+        <h3>Read our story →</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="index.html"><span class="dot"></span>Rainbow Schools</a>
+        <p class="footer-note" style="margin-top:14px;">A world where every child, regardless of ability, lives a happy, safe and fulfilled life.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="about.html">About Us</a>
+        <a href="vulnerable-children.html">Who We Support</a>
+        <a href="rainbow-centre-punjab.html">Rainbow Centre Punjab</a>
+        <a href="first-phase.html">First Phase</a>
+        <a href="our-story.html">Our Story</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get involved</h4>
+        <a href="get-involved.html">Volunteer &amp; Fundraise</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="learn-punjabi.html">Learn Punjabi</a>
+        <a href="https://www.gofundme.com/f/special-school-punjab?cp_src=d" target="_blank" rel="noopener">Donate</a>
+      </div>
+    </div>
+    <div class="footer-bottom wrap" style="padding-left:0;padding-right:0;">
+      UK registered Charity Number 1168048 · Rainbow Charitable Trust, India · info@rainbowschools.co.uk
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', ()=>{
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
