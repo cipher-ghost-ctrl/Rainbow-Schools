@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Rainbow Schools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF3E7;--paper-2:#F3E7D6;--ink:#1E2A38;--ink-soft:#4A5566;
+    --marigold:#E8933F;--terracotta:#C1502E;--sage:#6E8B5D;--indigo:#2F4C6B;
+    --line: rgba(30,42,56,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Work Sans', sans-serif;line-height:1.6;}
+  h1,h2,h3{font-family:'Fraunces', serif;font-weight:500;margin:0 0 0.5em;letter-spacing:-0.01em;}
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  header.site{position:sticky;top:0;z-index:50;background:rgba(251,243,231,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1080px;margin:0 auto;}
+  .logo{font-family:'Fraunces', serif;font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}
+  .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--marigold);display:inline-block;}
+  nav.links{display:flex;gap:24px;font-size:14px;flex-wrap:wrap;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s;white-space:nowrap;}
+  nav.links a:hover{border-color:var(--terracotta);color:var(--ink);}
+  nav.links a.active{color:var(--terracotta);border-color:var(--terracotta);font-weight:600;}
+  nav.links a.learn-nav-link{color:var(--terracotta);font-weight:600;}
+  .btn{display:inline-block;padding:11px 22px;border-radius:30px;background:var(--terracotta);color:#fff;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.02em;transition:transform .15s ease;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:transparent;border:1px solid var(--ink);color:var(--ink);}
+
+  .page-hero{padding:64px 0 48px;}
+  .eyebrow{font-family:'Space Mono', monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--terracotta);margin-bottom:14px;display:block;}
+  .page-hero h1{font-size:clamp(30px,4.5vw,48px);max-width:720px;line-height:1.1;}
+  .page-hero p.lead{font-size:17px;color:var(--ink-soft);max-width:600px;}
+  .breadcrumb{font-size:12px;color:var(--ink-soft);margin-bottom:18px;}
+  .breadcrumb a{color:var(--ink-soft);text-decoration:none;}
+  .breadcrumb a:hover{color:var(--terracotta);}
+
+  section{padding:56px 0;border-top:1px solid var(--line);}
+  .section-head{max-width:640px;margin-bottom:36px;}
+  .section-head h2{font-size:clamp(24px,3vw,32px);}
+  .section-head p{color:var(--ink-soft);font-size:16px;}
+
+  .scheme-card{
+    background:var(--indigo);color:#fff;border-radius:20px;padding:36px;
+    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+  }
+  .scheme-card .eyebrow{color:var(--marigold);}
+  .scheme-card h2{color:#fff;margin-bottom:8px;}
+  .scheme-card p{color:rgba(255,255,255,0.7);margin-bottom:0;max-width:420px;}
+
+  .book-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;
+    display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;
+  }
+  .book-cover{width:70px;height:96px;background:var(--paper-2);border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px;}
+  .book-card .content{flex:1;min-width:220px;}
+  .book-price{font-family:'Space Mono',monospace;font-size:13px;color:var(--terracotta);margin-top:8px;display:block;}
+
+  .link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .link-card{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;
+    display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;
+  }
+  .link-card .ic{font-size:20px;flex-shrink:0;}
+  .link-card h3{font-size:14px;margin:0;}
+
+  .next-links{display:flex;gap:16px;flex-wrap:wrap;}
+  .next-card{flex:1;min-width:220px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:transform .15s ease, border-color .15s ease;}
+  .next-card:hover{transform:translateY(-3px);border-color:var(--terracotta);}
+  .next-card .label{font-family:'Space Mono',monospace;font-size:11px;color:var(--marigold);}
+  .next-card h3{font-size:16px;margin:6px 0 0;}
+
+  footer{padding:56px 0 40px;border-top:1px solid var(--line);}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+  .footer-note{font-size:13px;color:var(--ink-soft);max-width:340px;}
+  .footer-col h4{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:14px;}
+  .footer-col a{display:block;font-size:13px;color:var(--ink-soft);text-decoration:none;margin-bottom:9px;}
+  .footer-col a:hover{color:var(--terracotta);}
+  .footer-bottom{border-top:1px solid var(--line);padding-top:20px;font-size:12px;color:var(--ink-soft);}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  .hamburger{display:none; background:transparent; border:none; cursor:pointer;width:34px;height:34px; flex-direction:column; align-items:center; justify-content:center; gap:5px;padding:0;}
+  .hamburger span{width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s, opacity .25s;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  @media (max-width:820px){
+    .link-grid{grid-template-columns:1fr;}
+    .nav{padding:14px 18px;gap:10px;}
+    .logo{font-size:16px;gap:7px;white-space:nowrap;}
+    .btn{padding:9px 16px;font-size:13px;flex-shrink:0;}
+    .hamburger{display:flex;flex-shrink:0;}
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;background:var(--paper); border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; gap:0;max-height:0; overflow:hidden; padding:0 20px;
+      transition:max-height .3s ease, padding .3s ease;z-index:60;
+    }
+    nav.links.open{ max-height:calc(100vh - 64px); padding:12px 20px 18px; overflow-y:auto; }
+    nav.links a{ padding:12px 0; width:100%; border-bottom:1px solid var(--line); }
+    nav.links a:last-child{ border-bottom:none; }
+  }
+  @media (max-width:480px){
+    .nav{padding:12px 14px;gap:8px;}
+    .logo{font-size:14px;}
+    .logo .dot{width:8px;height:8px;}
+    .btn{padding:8px 13px;font-size:12px;}
+    .hamburger{width:30px;height:30px;}
+    .hamburger span{width:18px;}
+    .page-hero{padding:44px 0 32px;}
+    .scheme-card{padding:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a class="logo" href="index.html"><span class="dot"></span>Rainbow Schools</a>
+    <nav class="links" id="navLinks">
+      <a href="about.html">About</a>
+      <a href="vulnerable-children.html">Who we support</a>
+      <a href="rainbow-centre-punjab.html">Rainbow Centre Punjab</a>
+      <a href="first-phase.html">First Phase</a>
+      <a href="get-involved.html">Get involved</a>
+      <a href="our-story.html">Our story</a>
+      <a href="resources.html" class="active">Resources</a>
+      <a href="contact.html">Contact</a>
+      <a href="learn-punjabi.html" class="learn-nav-link">Learn Punjabi</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a class="btn" href="https://www.gofundme.com/f/special-school-punjab?cp_src=d" target="_blank" rel="noopener">Donate</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero" style="border-top:none;">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="index.html">Home</a> / Resources</p>
+    <span class="eyebrow">Resources</span>
+    <h1>Books, learning tools, and further reading.</h1>
+    <p class="lead">Everything Rainbow Schools has published or gathered to support Punjabi learning and understanding disability — in one clearly organised place.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="scheme-card reveal">
+      <div>
+        <span class="eyebrow">Now fully digital</span>
+        <h2>Rainbow Punjabi Accelerated Reading Scheme</h2>
+        <p>The complete interactive reading scheme by Arvinder Singh Paul — learn Punjabi five letters at a time, entirely free, online.</p>
+      </div>
+      <a class="btn" href="learn-punjabi.html" style="background:var(--marigold);">Open the scheme →</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Also by Arvinder Singh Paul</span>
+      <h2>My God Is Better Than Yours!</h2>
+    </div>
+    <div class="book-card reveal">
+      <div class="book-cover">📕</div>
+      <div class="content">
+        <h3>My God Is Better Than Yours!</h3>
+        <p>A book on "Ek Onkar," focussing on the divine within each of us — written by Arvinder Singh Paul.</p>
+        <span class="book-price">£7.99 + £2.01 p&amp;p · suggested £10 donation</span>
+        <p style="font-size:12px;color:var(--ink-soft);margin-top:10px;margin-bottom:0;">All proceeds go towards building Rainbow Centre Punjab. Contact us to order — see the <a href="contact.html" style="color:var(--terracotta);font-weight:600;">Contact page</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Understanding disability</span>
+      <h2>Further learning &amp; support.</h2>
+      <p>A collection of resources on learning disabilities and related conditions, for parents, teachers, and anyone wanting to understand more.</p>
+    </div>
+    <div class="link-grid reveal">
+      <a class="link-card" href="vulnerable-children.html">
+        <span class="ic">🧩</span>
+        <h3>Who we support — conditions explained</h3>
+      </a>
+      <a class="link-card" href="contact.html">
+        <span class="ic">💬</span>
+        <h3>Free parent advice service</h3>
+      </a>
+      <a class="link-card" href="#">
+        <span class="ic">▶️</span>
+        <h3>Learning disability &amp; dyslexia videos</h3>
+      </a>
+      <a class="link-card" href="our-story.html">
+        <span class="ic">📖</span>
+        <h3>Sensory Integration — from our blog</h3>
+      </a>
+    </div>
+    <p style="font-size:12px;color:var(--ink-soft);margin-top:16px;">The YouTube links from the original Resources page will be re-added here once confirmed — the original page listed 5 videos on learning disabilities and dyslexia.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Keep exploring</span>
+      <h2>Where to go next</h2>
+    </div>
+    <div class="next-links reveal">
+      <a class="next-card" href="learn-punjabi.html">
+        <span class="label">Next</span>
+        <h3>Start learning Punjabi →</h3>
+      </a>
+      <a class="next-card" href="contact.html">
+        <span class="label">Order a book</span>
+        <h3>Contact us →</h3>
+      </a>
+      <a class="next-card" href="our-story.html">
+        <span class="label">Related</span>
+        <h3>Read our story →</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="index.html"><span class="dot"></span>Rainbow Schools</a>
+        <p class="footer-note" style="margin-top:14px;">A world where every child, regardless of ability, lives a happy, safe and fulfilled life.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="about.html">About Us</a>
+        <a href="vulnerable-children.html">Who We Support</a>
+        <a href="rainbow-centre-punjab.html">Rainbow Centre Punjab</a>
+        <a href="first-phase.html">First Phase</a>
+        <a href="our-story.html">Our Story</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get involved</h4>
+        <a href="get-involved.html">Volunteer &amp; Fundraise</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="learn-punjabi.html">Learn Punjabi</a>
+        <a href="https://www.gofundme.com/f/special-school-punjab?cp_src=d" target="_blank" rel="noopener">Donate</a>
+      </div>
+    </div>
+    <div class="footer-bottom wrap" style="padding-left:0;padding-right:0;">
+      UK registered Charity Number 1168048 · Rainbow Charitable Trust, India · info@rainbowschools.co.uk
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', ()=>{
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
