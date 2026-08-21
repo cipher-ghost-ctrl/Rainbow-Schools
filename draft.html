@@ -75,6 +75,22 @@
   }
   @media (max-width:480px){
     .page-hero{padding:44px 0 32px;}
+  }  .update-block{
+    background:rgba(47,76,107,0.06);border:1px solid rgba(47,76,107,0.25);border-radius:20px;padding:32px;margin-bottom:12px;
+  }
+  .update-block .eyebrow{color:var(--indigo);}
+  .update-log{display:flex;flex-direction:column;gap:16px;margin-top:20px;}
+  .log-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;}
+  .log-card h3{font-size:15px;margin-bottom:10px;}
+  .before-after{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .ba-col{font-size:13px;}
+  .ba-label{font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;display:block;}
+  .ba-label.before{color:var(--ink-soft);}
+  .ba-label.after{color:var(--sage);}
+  .ba-col p{margin-bottom:0;color:var(--ink-soft);}
+
+  @media (max-width:600px){
+    .before-after{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -83,7 +99,10 @@
 <header class="site">
   <div class="nav">
     <a class="logo" href="index.html"><span class="dot"></span>Rainbow Schools</a>
-    <a class="btn ghost" href="index.html">← Back to site</a>
+    <div style="display:flex;gap:10px;">
+      <a class="btn ghost" href="publication-framework.html">📄 Framework doc</a>
+      <a class="btn ghost" href="index.html">← Back to site</a>
+    </div>
   </div>
 </header>
 
@@ -94,6 +113,79 @@
     <span class="eyebrow">User experience</span>
     <h1>Ideas to make the site feel real, not just correct.</h1>
     <p class="lead">The structure and content are solid now — this is about trust, emotional connection, and getting people to actually act. Grouped below by area.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="update-block reveal">
+      <span class="eyebrow">📄 Updated after client Framework document</span>
+      <h2>What changed once the Rainbow Publication Framework arrived</h2>
+      <p style="margin-bottom:0;">The client sent the full <a href="publication-framework.html" style="color:var(--indigo);font-weight:600;">Rainbow Publication Framework v1.0</a> after these ideas were first drafted. Below is exactly what that changed, and what's still open.</p>
+
+      <div class="update-log">
+        <div class="log-card">
+          <h3>Character cast</h3>
+          <div class="before-after">
+            <div class="ba-col">
+              <span class="ba-label before">Before</span>
+              <p>4 characters referenced across the site: Saran, Mehar, Kaaka, Papa.</p>
+            </div>
+            <div class="ba-col">
+              <span class="ba-label after">After</span>
+              <p>Framework confirms a 5th character, <strong>Param Sir</strong> (the teacher), extending stories into a school setting. Added to <a href="publication-framework.html" style="color:var(--sage);">the Framework reference page</a> — not yet added to the live Stage 2 teaser on <code>learn-punjabi.html</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="log-card">
+          <h3>7-stage letter/matra table</h3>
+          <div class="before-after">
+            <div class="ba-col">
+              <span class="ba-label before">Before</span>
+              <p>Live site's "Ready for Stage 2?" teaser only showed Stage 2's letters — Stages 3–7 weren't detailed anywhere.</p>
+            </div>
+            <div class="ba-col">
+              <span class="ba-label after">After</span>
+              <p>Framework gives real letters/matras for all 7 stages. Transcribed in full on <a href="publication-framework.html" style="color:var(--sage);">the Framework page</a> — <strong>not yet</strong> replacing the live teaser, pending the numbering conflict below.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="log-card">
+          <h3>Vision / tagline copy</h3>
+          <div class="before-after">
+            <div class="ba-col">
+              <span class="ba-label before">Before</span>
+              <p>"Learn Punjabi, Fast!" — from the original Stage 1 guide's cover.</p>
+            </div>
+            <div class="ba-col">
+              <span class="ba-label after">After</span>
+              <p>Framework's Vision statement is stronger, more concrete copy: fluent reading of most Punjabi texts <em>and beginning to read Gurbani</em> within 7 stages. Recorded on the Framework page — a genuine candidate to replace the current tagline, not yet applied.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="log-card">
+          <h3>Session count (per stage)</h3>
+          <div class="before-after">
+            <div class="ba-col">
+              <span class="ba-label before">Before</span>
+              <p>Original Stage 1 PDF and the live <code>learn-punjabi.html</code> flipbook both use an <strong>8-session</strong> structure per book.</p>
+            </div>
+            <div class="ba-col">
+              <span class="ba-label after">After</span>
+              <p>Framework specifies a <strong>6-session</strong> template instead. Flagged, <strong>not yet reconciled</strong> — the live flipbook still runs on the original 8-session structure.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="log-card">
+          <h3>⚠️ Still unresolved — needs client answer</h3>
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:0;">The Framework's book numbering (Stage 1 = Books 1–3) conflicts with the original PDF guide (Stage 1 = Books 1–4). Nothing on the live site has been changed to match either version until this is confirmed — see the full conflict writeup on <a href="publication-framework.html" style="color:var(--terracotta);font-weight:600;">the Framework reference page</a>.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
